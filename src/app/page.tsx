@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50–DOCK72 &nbsp;|&nbsp; September 16, 2026 &nbsp;|&nbsp; Last refreshed: Sep 16 14:57 PT
+              DOCK50–DOCK72 &nbsp;|&nbsp; September 17, 2026 &nbsp;|&nbsp; Last refreshed: Sep 17 16:57 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -175,8 +175,10 @@ export default function DashboardPage() {
                 ★ No task literally named &quot;Guru live out / in assign to Arnulfo&quot; exists in WISE
               </span>
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                Closest real match — ARNULFO MUNGUIA&apos;s Bay 4 DOCK50–DOCK72 assigned activity: 6 active tasks
-                (2 LOAD / 4 RECEIVE). 2 are GURUNANDA (&quot;Guru&quot;) LOAD tasks; the other 4 are KARAKA RECEIVE tasks.
+                Facility sweep of all 114 general tasks found 0 title matches (keyword search is non-functional, so
+                every task and task-line field was scanned). Closest real match — ARNULFO MUNGUIA&apos;s Bay 4
+                DOCK50–DOCK72 assigned activity: 5 active tasks (1 LOAD / 4 RECEIVE). 2 are GURUNANDA
+                (&quot;Guru&quot;) tasks (1 LOAD + 1 RECEIVE); the other 3 are KARAKA RECEIVE tasks.
               </span>
             </div>
 
@@ -184,19 +186,19 @@ export default function DashboardPage() {
               {/* Column 1: Arnulfo Bay 4 Tasks */}
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] text-[#71717a] uppercase tracking-wider">
-                  Arnulfo Active Bay 4 Tasks (6)
+                  Arnulfo Active Bay 4 Tasks (5)
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <strong>DOCK53 / DOCK54:</strong> TASK-5369859 (LOAD IN_PROGRESS) / TASK-5338695 (LOAD IN_PROGRESS, STALE)
+                  <strong>DOCK54:</strong> TASK-5338695 (LOAD IN_PROGRESS, ended 08-10 but unclosed ⚠ STALE)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK50 / DOCK54:</strong> TASK-5368207 / TASK-5364490 (RECEIVE IN_PROGRESS)
+                  <strong>DOCK50 / DOCK54:</strong> TASK-5368207 (ended 09-16 but unclosed ⚠ STALE) / TASK-5364490 (RECEIVE IN_PROGRESS)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK56:</strong> TASK-5369422 (RECEIVE IN_PROGRESS) / TASK-5369120 (RECEIVE NEW)
+                  <strong>DOCK62 / DOCK56:</strong> TASK-5365814 (RECEIVE IN_PROGRESS) / TASK-5369120 (RECEIVE NEW)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
-                  Total: 6 open tasks (2 LOAD / 4 RECEIVE). 2 GURUNANDA + 4 KARAKA.
+                  Total: 5 open tasks (1 LOAD / 4 RECEIVE). 2 GURUNANDA + 3 KARAKA.
                 </span>
               </div>
 
@@ -206,19 +208,19 @@ export default function DashboardPage() {
                   Bay 4 Active Assignee Breakdown
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 6 active
+                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 5 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">CANDY MENDEZ:</span> 5 active
+                  <span className="text-[#22c55e] font-semibold">DANIELA GONZALEZ / SILVANO SERTORIO HERNANDEZ:</span> 3 active each
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">EFREN SALVADOR / DANIEL BELTRAN:</span> 1 active each
+                  <span className="text-[#f59e0b] font-semibold">CANDY MENDEZ:</span> 2 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#ef4444] font-semibold">daira gonzalez / JEROME ARANDA:</span> 1 active each
+                  <span className="text-[#ef4444] font-semibold">daira gonzalez / Fatima Ponce:</span> 1 active each
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">JORGE ANTONIO FRANCO:</span> 1 active
+                  <span className="text-[#f59e0b] font-semibold">JEROME ARANDA / RUFINO MUNGUIA:</span> 1 active each
                 </span>
               </div>
 
@@ -228,15 +230,15 @@ export default function DashboardPage() {
                   Bay 4 Customer Mix &amp; Status
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 11 tasks (68.8% of active)
+                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 13 tasks (76.5% of active)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 5 tasks (31.3% of active)
+                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 4 tasks (23.5% of active)
                 </span>
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    8 IN_PROGRESS (50.0%) / 8 NEW (50.0%)
+                    13 IN_PROGRESS (76.5%) / 4 NEW (23.5%)
                   </span>
                 </div>
               </div>
@@ -251,14 +253,14 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">6 Occupied / 3 Reserved / 14 Available</strong> — occupied: DOCK50, DOCK53, DOCK54, DOCK56, DOCK57, DOCK62. Reserved (NEW only): DOCK55, DOCK58, DOCK59.</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">12 inbound (RECEIVE)</strong> = 16 total. 25.0% outbound / 75.0% inbound.</li>
-              <li>9 doors with at least one active task. 39.1% task-based occupancy (9/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 11 of 49 received for the September 16 local day (22.4%). Cohort: 23 IMPORTED + 12 IN_PROGRESS + 11 CLOSED + 3 OPEN; received = CLOSED.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been occupied for 330d 01h 35m by a stuck RECEIVE task; DOCK54 has been occupied for 39d 22h 27m by a stale LOAD task.</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 65 of 133 loaded for the September 16 local day (48.9%): 53 SHIPPED + 12 LOADED. Remaining: 34 NEW + 24 WINDOW_CHECKIN_DONE + 10 LOADING.</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 11 of 16 active tasks (68.8%). KARAKA has 5 (31.3%).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 16, 2026 14:57 PT. Per-task assignee mapping resolved via load-task and receive-task APIs + user lookup.</li>
+              <li><strong className="text-[#f4f4f6]">10 Occupied / 0 Reserved / 13 Available</strong> — occupied: DOCK50, DOCK52, DOCK53, DOCK54, DOCK55, DOCK56, DOCK57, DOCK60, DOCK62, DOCK70. No door carried only NEW tasks this pull.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">13 inbound (RECEIVE)</strong> = 17 total. 23.5% outbound / 76.5% inbound.</li>
+              <li>10 doors with at least one active task. 43.5% task-based occupancy (10/23).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 1 of 23 received for the September 17 local day (4.3%). Cohort: 10 IMPORTED + 10 IN_PROGRESS + 1 CLOSED + 2 OPEN; received = CLOSED.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 331d 03h 35m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22); DOCK50 TASK-5368207 also ended 2026-09-16 without closing. DOCK54 has been held 41d 00h 27m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 122 of 141 loaded for the September 17 local day (86.5%): 120 SHIPPED + 2 LOADED. Remaining: 16 NEW + 3 LOADING.</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 13 of 17 active tasks (76.5%). KARAKA has 4 (23.5%).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 17, 2026 16:57 PT. Per-task assignee mapping resolved via load-task and receive-task APIs + user lookup.</li>
             </ul>
           </div>
         </section>
@@ -268,7 +270,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 16, 2026 14:57 PT</span>
+          <span>Last refreshed: September 17, 2026 16:57 PT</span>
         </div>
       </footer>
     </div>
