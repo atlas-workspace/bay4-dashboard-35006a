@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50–DOCK72 &nbsp;|&nbsp; September 19, 2026 &nbsp;|&nbsp; Last refreshed: Sep 19 18:43 PT
+              DOCK50–DOCK72 &nbsp;|&nbsp; September 20, 2026 &nbsp;|&nbsp; Last refreshed: Sep 20 07:18 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -252,12 +252,12 @@ export default function DashboardPage() {
               <li><strong className="text-[#f4f4f6]">5 Occupied / 2 Reserved / 16 Available</strong> — occupied: DOCK50, DOCK54, DOCK57, DOCK60, DOCK62. Reserved (only NEW tasks): DOCK55, DOCK56.</li>
               <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">11 inbound (RECEIVE)</strong> = 15 total. 26.7% outbound / 73.3% inbound.</li>
               <li>7 doors with at least one active task. 30.4% task-based occupancy (7/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 0 of 8 received for the September 19 local day (0.0%). Cohort: 8 receipts with appointmentTime on Sep 19 (7 IMPORTED + 1 OPEN; 6 GURUNANDA, LLC + 2 EMBER TECHNOLOGIES, INC.); received = CLOSED.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 332d 22h 21m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 42d 19h 13m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> No loads have an appointmentTime on the September 19 local day (0 scheduled / 0 loaded).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 0 receipts with an appointmentTime on the September 20 facility-local (PT) day — empty in every status (not status-filtered). The % received metric has no denominator today and is shown as unavailable.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 333d 17h 57m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 43d 14h 49m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the September 20 facility-local (PT) day, in any status. Earliest load appointment on the books is Sep 21 — the Sep 20 % loaded metric has no denominator and is shown as unavailable.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 12 of 15 active tasks (80.0%). KARAKA has 3 (20.0%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native OCCUPIED = 17; classifications differ on DOCK51, DOCK53, DOCK55, DOCK56, DOCK58, DOCK60, DOCK61, and DOCK63–DOCK71); the grid keeps the same task-derived convention as the tracked activity.</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 19, 2026 18:43 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 20, 2026 07:18:53 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -267,7 +267,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 19, 2026 18:43 PT</span>
+          <span>Last refreshed: September 20, 2026 07:18 PT</span>
         </div>
       </footer>
     </div>
