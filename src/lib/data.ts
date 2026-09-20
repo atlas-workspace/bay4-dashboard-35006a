@@ -41,7 +41,7 @@ export interface GrazaCombinedDispatchData { combinedSummary: { totalOrdersCover
 
 // Door utilization — task-derived. "Occupied" = ≥1 IN_PROGRESS task;
 // "Reserved" = only NEW tasks; "Available" = no active task.
-// Duration = as-of Sep 20 11:31:27 PT minus the earliest IN_PROGRESS task startTime on the door.
+// Duration = as-of Sep 20 16:01:22 PT minus the earliest IN_PROGRESS task startTime on the door.
 // anomaly = the door carries an IN_PROGRESS task whose endTime is already set (ended but never closed).
 export const doors: DoorRecord[] = [
   // ─── OCCUPIED — doors with IN_PROGRESS tasks (5 doors) ───
@@ -153,7 +153,7 @@ export const facilityWideLoadsShipped = 0;
 // Door occupancy duration: available from task startTime
 export const doorDurationsAvailable = true;
 
-// Active task records from fresh WISE data (Sep 20 11:31:27 PT)
+// Active task records from fresh WISE data (Sep 20 16:01:22 PT)
 // 15 active tasks: 4 LOAD (outbound) + 11 RECEIVE (inbound)
 export const assignments: TaskRecord[] = [
   { taskId: "TASK-5372145", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (2d 0h 58m)", assignee: "DANIEL BELTRAN", door: "DOCK50" },

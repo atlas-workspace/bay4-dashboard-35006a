@@ -257,7 +257,7 @@ export default function DashboardPage() {
               <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the September 20 facility-local (PT) day, in any status. Earliest load appointment on the books is Sep 21 — the Sep 20 % loaded metric has no denominator and is shown as unavailable.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 12 of 15 active tasks (80.0%). KARAKA has 3 (20.0%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native OCCUPIED = 17; classifications differ on DOCK51, DOCK53, DOCK55, DOCK56, DOCK58, DOCK60, DOCK61, and DOCK63–DOCK71); the grid keeps the same task-derived convention as the tracked activity.</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 20, 2026 11:31:27 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 20, 2026 16:01:22 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
