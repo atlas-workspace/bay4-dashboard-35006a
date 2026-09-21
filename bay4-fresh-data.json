@@ -1,5 +1,5 @@
 {
- "pulledAtPT": "2026-09-20 11:31:27 PDT",
+ "pulledAtPT": "2026-09-20 17:42:56 PDT",
  "localDay": "2026-09-20",
  "facility": "Valley View (LT_F1)",
  "tenant": "LT",
@@ -9,9 +9,18 @@
    "door": "DOCK50",
    "derivedStatus": "Occupied",
    "nativeDockStatus": "OCCUPIED",
-   "duration": "333d 22h 10m",
+   "duration": "334d 4h 21m",
    "anomaly": true,
    "tasks": [
+    {
+     "type": "LOAD",
+     "id": "TASK-5372145",
+     "status": "IN_PROGRESS",
+     "assignee": "DANIEL BELTRAN",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-18T15:02:46",
+     "endTime": null
+    },
     {
      "type": "RECEIVE",
      "id": "TASK-5090739",
@@ -20,14 +29,176 @@
      "customerId": "ORG-655875",
      "startTime": "2025-10-21T13:21:14",
      "endTime": "2025-10-22T10:42:01"
+    }
+   ]
+  },
+  {
+   "door": "DOCK54",
+   "derivedStatus": "Occupied",
+   "nativeDockStatus": "OCCUPIED",
+   "duration": "44d 1h 13m",
+   "anomaly": true,
+   "tasks": [
+    {
+     "type": "LOAD",
+     "id": "TASK-5372101",
+     "status": "IN_PROGRESS",
+     "assignee": "ARNULFO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-18T14:29:16",
+     "endTime": null
     },
     {
      "type": "LOAD",
-     "id": "TASK-5372145",
+     "id": "TASK-5365421",
      "status": "IN_PROGRESS",
-     "assignee": "DANIEL BELTRAN",
+     "assignee": "ARNULFO MUNGUIA",
      "customerId": "ORG-655875",
-     "startTime": "2026-09-18T15:02:46",
+     "startTime": "2026-09-11T09:32:28",
+     "endTime": "2026-09-11T11:16:16"
+    },
+    {
+     "type": "LOAD",
+     "id": "TASK-5338695",
+     "status": "IN_PROGRESS",
+     "assignee": "ARNULFO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": "2026-08-07T16:29:29",
+     "endTime": "2026-08-10T09:27:26"
+    },
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5369031",
+     "status": "IN_PROGRESS",
+     "assignee": "CANDY MENDEZ",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-18T14:30:50",
+     "endTime": null
+    },
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5364490",
+     "status": "IN_PROGRESS",
+     "assignee": "ARNULFO MUNGUIA",
+     "customerId": "ORG-585450",
+     "startTime": "2026-09-15T16:23:23",
+     "endTime": null
+    }
+   ]
+  },
+  {
+   "door": "DOCK57",
+   "derivedStatus": "Occupied",
+   "nativeDockStatus": "OCCUPIED",
+   "duration": "2d 21h 31m",
+   "anomaly": false,
+   "tasks": [
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5371291",
+     "status": "IN_PROGRESS",
+     "assignee": "DANIELA GONZALEZ",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-17T20:11:04",
+     "endTime": null
+    },
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5371234",
+     "status": "IN_PROGRESS",
+     "assignee": "DANIELA GONZALEZ",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-18T15:34:49",
+     "endTime": null
+    }
+   ]
+  },
+  {
+   "door": "DOCK60",
+   "derivedStatus": "Occupied",
+   "nativeDockStatus": "AVAILABLE",
+   "duration": "2d 3h 33m",
+   "anomaly": false,
+   "tasks": [
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5371932",
+     "status": "NEW",
+     "assignee": "RUFINO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": null,
+     "endTime": null
+    },
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5371839",
+     "status": "IN_PROGRESS",
+     "assignee": "RUFINO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-18T14:09:30",
+     "endTime": null
+    }
+   ]
+  },
+  {
+   "door": "DOCK62",
+   "derivedStatus": "Occupied",
+   "nativeDockStatus": "OCCUPIED",
+   "duration": "6d 2h 58m",
+   "anomaly": false,
+   "tasks": [
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5365814",
+     "status": "IN_PROGRESS",
+     "assignee": "ARNULFO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": "2026-09-14T14:44:43",
+     "endTime": null
+    }
+   ]
+  },
+  {
+   "door": "DOCK55",
+   "derivedStatus": "Reserved",
+   "nativeDockStatus": "AVAILABLE",
+   "duration": null,
+   "anomaly": false,
+   "tasks": [
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5371830",
+     "status": "NEW",
+     "assignee": "RUFINO MUNGUIA",
+     "customerId": "ORG-655875",
+     "startTime": null,
+     "endTime": null
+    },
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5368665",
+     "status": "NEW",
+     "assignee": "JEROME ARANDA",
+     "customerId": "ORG-585450",
+     "startTime": null,
+     "endTime": null
+    }
+   ]
+  },
+  {
+   "door": "DOCK56",
+   "derivedStatus": "Reserved",
+   "nativeDockStatus": "AVAILABLE",
+   "duration": null,
+   "anomaly": false,
+   "tasks": [
+    {
+     "type": "RECEIVE",
+     "id": "TASK-5369120",
+     "status": "NEW",
+     "assignee": "ARNULFO MUNGUIA",
+     "customerId": "ORG-585450",
+     "startTime": null,
      "endTime": null
     }
    ]
@@ -57,132 +228,6 @@
    "tasks": []
   },
   {
-   "door": "DOCK54",
-   "derivedStatus": "Occupied",
-   "nativeDockStatus": "OCCUPIED",
-   "duration": "43d 19h 1m",
-   "anomaly": true,
-   "tasks": [
-    {
-     "type": "LOAD",
-     "id": "TASK-5338695",
-     "status": "IN_PROGRESS",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": "2026-08-07T16:29:29",
-     "endTime": "2026-08-10T09:27:26"
-    },
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5364490",
-     "status": "IN_PROGRESS",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-585450",
-     "startTime": "2026-09-15T16:23:23",
-     "endTime": null
-    },
-    {
-     "type": "LOAD",
-     "id": "TASK-5365421",
-     "status": "IN_PROGRESS",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-11T09:32:28",
-     "endTime": "2026-09-11T11:16:16"
-    },
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5369031",
-     "status": "IN_PROGRESS",
-     "assignee": "CANDY MENDEZ",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-18T14:30:50",
-     "endTime": null
-    },
-    {
-     "type": "LOAD",
-     "id": "TASK-5372101",
-     "status": "IN_PROGRESS",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-18T14:29:16",
-     "endTime": null
-    }
-   ]
-  },
-  {
-   "door": "DOCK55",
-   "derivedStatus": "Reserved",
-   "nativeDockStatus": "AVAILABLE",
-   "duration": null,
-   "anomaly": false,
-   "tasks": [
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5368665",
-     "status": "NEW",
-     "assignee": "JEROME ARANDA",
-     "customerId": "ORG-585450",
-     "startTime": null,
-     "endTime": null
-    },
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5371830",
-     "status": "NEW",
-     "assignee": "RUFINO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": null,
-     "endTime": null
-    }
-   ]
-  },
-  {
-   "door": "DOCK56",
-   "derivedStatus": "Reserved",
-   "nativeDockStatus": "AVAILABLE",
-   "duration": null,
-   "anomaly": false,
-   "tasks": [
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5369120",
-     "status": "NEW",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-585450",
-     "startTime": null,
-     "endTime": null
-    }
-   ]
-  },
-  {
-   "door": "DOCK57",
-   "derivedStatus": "Occupied",
-   "nativeDockStatus": "OCCUPIED",
-   "duration": "2d 15h 20m",
-   "anomaly": false,
-   "tasks": [
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5371234",
-     "status": "IN_PROGRESS",
-     "assignee": "DANIELA GONZALEZ",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-18T15:34:49",
-     "endTime": null
-    },
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5371291",
-     "status": "IN_PROGRESS",
-     "assignee": "DANIELA GONZALEZ",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-17T20:11:04",
-     "endTime": null
-    }
-   ]
-  },
-  {
    "door": "DOCK58",
    "derivedStatus": "Available",
    "nativeDockStatus": "OCCUPIED",
@@ -199,57 +244,12 @@
    "tasks": []
   },
   {
-   "door": "DOCK60",
-   "derivedStatus": "Occupied",
-   "nativeDockStatus": "AVAILABLE",
-   "duration": "1d 21h 21m",
-   "anomaly": false,
-   "tasks": [
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5371839",
-     "status": "IN_PROGRESS",
-     "assignee": "RUFINO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-18T14:09:30",
-     "endTime": null
-    },
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5371932",
-     "status": "NEW",
-     "assignee": "RUFINO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": null,
-     "endTime": null
-    }
-   ]
-  },
-  {
    "door": "DOCK61",
    "derivedStatus": "Available",
    "nativeDockStatus": "OCCUPIED",
    "duration": null,
    "anomaly": false,
    "tasks": []
-  },
-  {
-   "door": "DOCK62",
-   "derivedStatus": "Occupied",
-   "nativeDockStatus": "OCCUPIED",
-   "duration": "5d 20h 46m",
-   "anomaly": false,
-   "tasks": [
-    {
-     "type": "RECEIVE",
-     "id": "TASK-5365814",
-     "status": "IN_PROGRESS",
-     "assignee": "ARNULFO MUNGUIA",
-     "customerId": "ORG-655875",
-     "startTime": "2026-09-14T14:44:43",
-     "endTime": null
-    }
-   ]
   },
   {
    "door": "DOCK63",
@@ -333,13 +333,13 @@
   }
  ],
  "assigneeCounts": {
-  "DANIEL BELTRAN": 1,
   "ARNULFO MUNGUIA": 6,
   "RUFINO MUNGUIA": 3,
-  "JEROME ARANDA": 1,
   "DANIELA GONZALEZ": 2,
+  "DANIEL BELTRAN": 1,
+  "daira gonzalez": 1,
   "CANDY MENDEZ": 1,
-  "daira gonzalez": 1
+  "JEROME ARANDA": 1
  },
  "mix": {
   "LOAD": 4,
