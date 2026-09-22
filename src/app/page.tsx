@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; September 22, 2026 &nbsp;|&nbsp; Last refreshed: Sep 22 11:38 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; September 22, 2026 &nbsp;|&nbsp; Last refreshed: Sep 22 13:33 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -249,15 +249,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">5 Occupied / 2 Reserved / 16 Available</strong> - occupied: DOCK50, DOCK53, DOCK54, DOCK55, DOCK62. Reserved (only NEW tasks): DOCK56, DOCK59.</li>
+              <li><strong className="text-[#f4f4f6]">5 Occupied / 3 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK52, DOCK53, DOCK54, DOCK62. Reserved (only NEW tasks): DOCK55, DOCK56, DOCK59.</li>
               <li>Active tasks: <strong className="text-[#7c3aed]">5 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 12 total. 41.7% outbound / 58.3% inbound.</li>
-              <li>7 doors with at least one active task. 30.4% task-based occupancy (7/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 33 receipts with an appointmentTime on the September 22 facility-local (PT) day. % received = 0 of 33 = 0.0% (receipts in CLOSED status).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 335d 22h 17m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 45d 19h 8m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 111 loads with an appointmentTime on the September 22 facility-local (PT) day. % loaded = 37 of 111 = 33.3% (LOADED + SHIPPED).</li>
+              <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 34 receipts with an appointmentTime on the September 22 facility-local (PT) day. % received = 0 of 34 = 0.0% (receipts in CLOSED status).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 336d 0h 12m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 45d 21h 4m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 109 loads with an appointmentTime on the September 22 facility-local (PT) day. % loaded = 49 of 109 = 45.0% (LOADED + SHIPPED).</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 9 of 12 active tasks (75.0%). KARAKA has 3 (25.0%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 14; AVAILABLE = 8; RESERVED = 1 - DOCK59 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 22, 2026 11:38 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 14; AVAILABLE = 6; RESERVED = 3 - DOCK50, DOCK55, DOCK59 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 22, 2026 13:33 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -267,7 +267,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 22, 2026 11:38 PT</span>
+          <span>Last refreshed: September 22, 2026 13:33 PT</span>
         </div>
       </footer>
     </div>

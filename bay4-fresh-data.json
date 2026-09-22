@@ -1,5 +1,5 @@
 {
-  "pulledAtPT": "2026-09-22 11:38 PT",
+  "pulledAtPT": "2026-09-22 13:33 PT",
   "localDay": "2026-09-22",
   "facility": "Valley View (LT_F1)",
   "tenant": "LT",
@@ -9,8 +9,8 @@
       "door": "DOCK50",
       "locationId": "570",
       "derivedStatus": "Occupied",
-      "nativeDockStatus": "AVAILABLE",
-      "duration": "335d 22h 17m",
+      "nativeDockStatus": "RESERVED",
+      "duration": "336d 0h 12m",
       "anomaly": true,
       "tasks": [
         {
@@ -37,18 +37,29 @@
     {
       "door": "DOCK52",
       "locationId": "556",
-      "derivedStatus": "Available",
-      "nativeDockStatus": "AVAILABLE",
-      "duration": null,
+      "derivedStatus": "Occupied",
+      "nativeDockStatus": "OCCUPIED",
+      "duration": "0d 1h 8m",
       "anomaly": false,
-      "tasks": []
+      "tasks": [
+        {
+          "type": "LOAD",
+          "id": "TASK-5374363",
+          "status": "IN_PROGRESS",
+          "assignee": "DANIEL BELTRAN",
+          "customerId": "ORG-655875",
+          "customerName": "GURUNANDA, LLC",
+          "startTime": "2026-09-22T12:25:32",
+          "endTime": null
+        }
+      ]
     },
     {
       "door": "DOCK53",
       "locationId": "552",
       "derivedStatus": "Occupied",
       "nativeDockStatus": "OCCUPIED",
-      "duration": "0d 19h 42m",
+      "duration": "0d 21h 37m",
       "anomaly": false,
       "tasks": [
         {
@@ -68,9 +79,19 @@
       "locationId": "564",
       "derivedStatus": "Occupied",
       "nativeDockStatus": "OCCUPIED",
-      "duration": "45d 19h 8m",
+      "duration": "45d 21h 4m",
       "anomaly": true,
       "tasks": [
+        {
+          "type": "LOAD",
+          "id": "TASK-5374255",
+          "status": "IN_PROGRESS",
+          "assignee": "DANIEL BELTRAN",
+          "customerId": "ORG-655875",
+          "customerName": "GURUNANDA, LLC",
+          "startTime": "2026-09-22T11:08:58",
+          "endTime": null
+        },
         {
           "type": "LOAD",
           "id": "TASK-5365421",
@@ -90,37 +111,17 @@
           "customerName": "GURUNANDA, LLC",
           "startTime": "2026-08-07T16:29:29",
           "endTime": "2026-08-10T09:27:26"
-        },
-        {
-          "type": "LOAD",
-          "id": "TASK-5374255",
-          "status": "IN_PROGRESS",
-          "assignee": "DANIEL BELTRAN",
-          "customerId": "ORG-655875",
-          "customerName": "GURUNANDA, LLC",
-          "startTime": "2026-09-22T11:08:58",
-          "endTime": null
         }
       ]
     },
     {
       "door": "DOCK55",
       "locationId": "560",
-      "derivedStatus": "Occupied",
-      "nativeDockStatus": "OCCUPIED",
-      "duration": "0d 0h 9m",
+      "derivedStatus": "Reserved",
+      "nativeDockStatus": "RESERVED",
+      "duration": null,
       "anomaly": false,
       "tasks": [
-        {
-          "type": "LOAD",
-          "id": "TASK-5374263",
-          "status": "IN_PROGRESS",
-          "assignee": "DANIEL BELTRAN",
-          "customerId": "ORG-655875",
-          "customerName": "GURUNANDA, LLC",
-          "startTime": "2026-09-22T11:29:07",
-          "endTime": null
-        },
         {
           "type": "RECEIVE",
           "id": "TASK-5373122",
@@ -234,7 +235,7 @@
       "locationId": "566",
       "derivedStatus": "Occupied",
       "nativeDockStatus": "OCCUPIED",
-      "duration": "7d 20h 53m",
+      "duration": "7d 22h 48m",
       "anomaly": false,
       "tasks": [
         {
