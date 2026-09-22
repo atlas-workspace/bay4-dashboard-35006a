@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50–DOCK72 &nbsp;|&nbsp; September 21, 2026 &nbsp;|&nbsp; Last refreshed: Sep 21 19:06 PT
+              DOCK50–DOCK72 &nbsp;|&nbsp; September 22, 2026 &nbsp;|&nbsp; Last refreshed: Sep 22 07:48 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -213,7 +213,7 @@ export default function DashboardPage() {
                   <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 8 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">DANIELA GONZALEZ:</span> 4 active
+                  <span className="text-[#22c55e] font-semibold">DANIELA GONZALEZ:</span> 1 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#f59e0b] font-semibold">DANIEL BELTRAN / JOSE MORALES / daira gonzalez / RUFINO MUNGUIA:</span> 1 active each
@@ -226,18 +226,18 @@ export default function DashboardPage() {
                   Bay 4 Customer Mix &amp; Status
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 12 tasks (75.0% of active)
+                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 9 tasks (69.2% of active)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 3 tasks (18.8% of active)
+                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 3 tasks (23.1% of active)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">LIFEPRO FITNESS LLC (ORG-798965):</span> 1 task (6.3% of active)
+                  <span className="text-[#f59e0b] font-semibold">LIFEPRO FITNESS LLC (ORG-798965):</span> 1 task (7.7% of active)
                 </span>
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    12 IN_PROGRESS (75.0%) / 4 NEW (25.0%)
+                    9 IN_PROGRESS (69.2%) / 4 NEW (30.8%)
                   </span>
                 </div>
               </div>
@@ -252,15 +252,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">10 Occupied / 2 Reserved / 11 Available</strong> — occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK59, DOCK61, DOCK62, DOCK64, DOCK72. Reserved (only NEW tasks): DOCK55, DOCK56.</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">10 inbound (RECEIVE)</strong> = 16 total. 37.5% outbound / 62.5% inbound.</li>
-              <li>12 doors with at least one active task. 52.2% task-based occupancy (12/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 56 receipts with an appointmentTime on the September 21 facility-local (PT) day. % received = 5 of 56 = 8.9% (receipts in CLOSED status).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 335d 5h 45m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 45d 2h 36m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 127 loads with an appointmentTime on the September 21 facility-local (PT) day. % loaded = 103 of 127 = 81.1% (LOADED + SHIPPED).</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 12 of 16 active tasks (75.0%). KARAKA has 3 (18.8%). LIFEPRO has 1 (6.3%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 22; only DOCK63 reads AVAILABLE natively while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 21, 2026 19:06 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li><strong className="text-[#f4f4f6]">7 Occupied / 2 Reserved / 14 Available</strong> — occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK62, DOCK72. Reserved (only NEW tasks): DOCK55, DOCK56.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 13 total. 46.2% outbound / 53.8% inbound.</li>
+              <li>9 doors with at least one active task. 39.1% task-based occupancy (9/23).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 31 receipts with an appointmentTime on the September 22 facility-local (PT) day. % received = 0 of 31 = 0.0% (receipts in CLOSED status).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 336d 1h 26m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 45d 22h 18m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10); DOCK54 TASK-5365421 also ended 2026-09-11 without closing.</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 105 loads with an appointmentTime on the September 22 facility-local (PT) day. % loaded = 2 of 105 = 1.9% (LOADED + SHIPPED).</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 9 of 13 active tasks (69.2%). KARAKA has 3 (23.1%). LIFEPRO has 1 (7.7%).</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 18; AVAILABLE = 5 — DOCK55, DOCK59, DOCK61, DOCK71, DOCK72 — while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 22, 2026 07:48 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -270,7 +270,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 21, 2026 19:06 PT</span>
+          <span>Last refreshed: September 22, 2026 07:48 PT</span>
         </div>
       </footer>
     </div>
