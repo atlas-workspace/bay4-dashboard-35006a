@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; September 27, 2026 &nbsp;|&nbsp; Last refreshed: Sep 27 13:58 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; September 27, 2026 &nbsp;|&nbsp; Last refreshed: Sep 27 18:56 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -192,7 +192,7 @@ export default function DashboardPage() {
                   <strong>DOCK50:</strong> TASK-5376774 (LOAD IN_PROGRESS)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK54:</strong> TASK-5338695 (LOAD IN_PROGRESS, ended 08-10 but unclosed ⚠ STALE)
+                  <strong>DOCK54:</strong> TASK-5338695 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
                   Total: 2 open tasks (2 LOAD / 0 RECEIVE). Both GURUNANDA. Arnulfo also has 2 facility
@@ -248,12 +248,12 @@ export default function DashboardPage() {
               <li><strong className="text-[#f4f4f6]">5 Occupied / 1 Reserved / 17 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK69. Reserved (only NEW tasks): DOCK56.</li>
               <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">4 inbound (RECEIVE)</strong> = 8 total. 50.0% outbound / 50.0% inbound.</li>
               <li>6 doors with at least one active task. 26.1% task-based occupancy (6/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 0 receipts with an appointmentTime on the September 27 facility-local (PT) day (Sunday). % received = N/A — no inbounds scheduled today (receipts in CLOSED status).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 341d 0h 37m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 50d 21h 29m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the September 27 facility-local (PT) day (Sunday). % loaded = N/A — no outbounds scheduled today (LOADED + SHIPPED). (Cumulative-load buckets: Sep 25 = 447, Sep 26 = 314, Sep 27 = 314, Sep 28 = 314, Sep 29 = 182.)</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA has 8 of 8 active tasks (100%). KARAKA has 0 (0%).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 0 receipts with an appointmentTime on the September 27 facility-local (PT) day (Sunday). % received = N/A — no inbounds scheduled on the Sep 27 PT day.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 341d 5h 34m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 51d 2h 26m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the September 27 facility-local (PT) day (Sunday). % loaded = N/A — no outbounds scheduled. (Cumulative-load buckets: Sep 25 = 447, Sep 26 = 314, Sep 27 = 314, Sep 28 = 314, Sep 29 = 182.)</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 8 of 8 active tasks (100%). KARAKA, LLC has 0 (0%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 14; AVAILABLE = 6; RESERVED = 3 - DOCK51, DOCK52, DOCK65 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 27, 2026 13:58 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 27, 2026 18:56 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -263,7 +263,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 27, 2026 13:58 PT</span>
+          <span>Last refreshed: September 27, 2026 18:56 PT</span>
         </div>
       </footer>
     </div>
