@@ -212,7 +212,10 @@ export default function DashboardPage() {
                   <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 5 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN / RUFINO MUNGUIA:</span> 1 active each
+                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 3 active
+                </span>
+                <span className="text-xs text-[#a1a1aa]">
+                  <span className="text-[#22c55e] font-semibold">RUFINO MUNGUIA:</span> 1 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#f59e0b] font-semibold">daira gonzalez / CANDY MENDEZ / Jorge Antonio Franco:</span> 1 active each
@@ -248,15 +251,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">7 Occupied / 1 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK52, DOCK53, DOCK54, DOCK55, DOCK59, DOCK69. Reserved (only NEW tasks): DOCK56.</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 10 total. 40.0% outbound / 60.0% inbound.</li>
-              <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 40 receipts with an appointmentTime on the September 29 facility-local (PT) day; 7 received (receipt status CLOSED) → 17.5% received.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 343d 1h 36m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 52d 22h 28m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 134 loads with an appointmentTime on the September 29 facility-local (PT) day (cumulative-load buckets: ≥ Sep 29 = 437, ≥ Sep 30 = 303 → day = 134). 76 loaded (18 LOADED + 58 SHIPPED) → 56.7% loaded.</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 8 of 10 active tasks (80%). KARAKA, LLC has 2 (20%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 14; AVAILABLE = 7; RESERVED = 2 - DOCK56, DOCK58 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 29, 2026 14:57 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li><strong className="text-[#f4f4f6]">8 Occupied / 1 Reserved / 14 Available</strong> - occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK55, DOCK59, DOCK69. Reserved (only NEW tasks): DOCK56.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 12 total. 50.0% outbound / 50.0% inbound.</li>
+              <li>9 doors with at least one active task. 39.1% task-based occupancy (9/23).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 39 receipts with an appointmentTime on the September 29 facility-local (PT) day; 15 received (receipt status CLOSED) → 38.5% received.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 343d 10h 28m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 53d 7h 20m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 133 loads with an appointmentTime on the September 29 facility-local (PT) day (cumulative-load buckets: ≥ Sep 29 = 457, ≥ Sep 30 = 324 → day = 133). 101 loaded (LOADED or SHIPPED) → 75.9% loaded.</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 10 of 12 active tasks (83%). KARAKA, LLC has 2 (17%).</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 13; AVAILABLE = 8; RESERVED = 2 - DOCK56, DOCK58 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, September 29, 2026 23:50 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -266,7 +269,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 29, 2026 14:57 PT</span>
+          <span>Last refreshed: September 29, 2026 23:50 PT</span>
         </div>
       </footer>
     </div>
