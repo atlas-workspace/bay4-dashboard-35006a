@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; October 1, 2026 &nbsp;|&nbsp; Last refreshed: Oct 1 08:27 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 1, 2026 &nbsp;|&nbsp; Last refreshed: Oct 1 15:08 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -195,7 +195,7 @@ export default function DashboardPage() {
                   <strong>DOCK51:</strong> TASK-5381268 (LOAD IN_PROGRESS)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK54:</strong> TASK-5382462 (LOAD NEW), TASK-5380820 (LOAD IN_PROGRESS), TASK-5338695 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
+                  <strong>DOCK54:</strong> TASK-5380820 (LOAD IN_PROGRESS), TASK-5338695 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <strong>DOCK55:</strong> TASK-5380438 + TASK-5378787 (RECEIVE IN_PROGRESS, KARAKA)
@@ -215,13 +215,13 @@ export default function DashboardPage() {
                   <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 7 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
+                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 2 active
+                </span>
+                <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#22c55e] font-semibold">Jorge Antonio Franco:</span> 2 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 1 active
-                </span>
-                <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">DANIELA GONZALEZ / JEROME ARANDA / daira gonzalez:</span> 1 active each
+                  <span className="text-[#f59e0b] font-semibold">DANIELA GONZALEZ / daira gonzalez:</span> 1 active each
                 </span>
               </div>
 
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    10 IN_PROGRESS (76.9%) / 3 NEW (23.1%)
+                    12 IN_PROGRESS (92.3%) / 1 NEW (7.7%)
                   </span>
                 </div>
               </div>
@@ -254,15 +254,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">7 Occupied / 1 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK63, DOCK69. Reserved (only NEW tasks): DOCK59.</li>
+              <li><strong className="text-[#f4f4f6]">8 Occupied / 0 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK55, DOCK63, DOCK69. No door carries only NEW tasks this pull.</li>
               <li>Active tasks: <strong className="text-[#7c3aed]">7 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 13 total. 53.8% outbound / 46.2% inbound.</li>
               <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 16 receipts with an appointmentTime on the October 1 facility-local (PT) day; 0 received (receipt status CLOSED) → 0.0% received.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 344d 19h 6m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 54d 15h 58m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 127 loads with an appointmentTime on the October 1 facility-local (PT) day (cumulative-load buckets: ≥ Oct 01 = 319, ≥ Oct 02 = 192 → day = 127). 3 loaded (LOADED or SHIPPED) → 2.4% loaded.</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 21 receipts with an appointmentTime on the October 1 facility-local (PT) day; 4 received (receipt status CLOSED) → 19.0% received.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 345d 1h 47m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 54d 22h 39m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 129 loads with an appointmentTime on the October 1 facility-local (PT) day (bounded appointmentTimePeriod = 129; cumulative-load buckets: ≥ Oct 01 = 422, ≥ Oct 02 = 293 → day = 129). 83 loaded (LOADED or SHIPPED) → 64.3% loaded.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 13 active tasks (85%). KARAKA, LLC has 2 (15%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 5; RESERVED = 1 - DOCK59 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 1, 2026 08:27 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 6; RESERVED = 0 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 1, 2026 15:08 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -272,7 +272,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: October 1, 2026 08:27 PT</span>
+          <span>Last refreshed: October 1, 2026 15:08 PT</span>
         </div>
       </footer>
     </div>
