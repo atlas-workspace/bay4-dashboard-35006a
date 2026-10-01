@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; September 29, 2026 &nbsp;|&nbsp; Last refreshed: Sep 29 23:50 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 1, 2026 &nbsp;|&nbsp; Last refreshed: Oct 1 08:27 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -177,8 +177,8 @@ export default function DashboardPage() {
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
                 Facility sweep of all 118 general tasks found 0 exact phrase matches (CLOSED 88 / NEEDS_APPROVAL 19 /
                 NEW 9 / IN_PROGRESS 2), so every task note, job description, and task-line field was scanned.
-                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: 5 active tasks
-                (3 LOAD / 2 RECEIVE), across GURUNANDA and KARAKA pickups.
+                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: 7 active tasks
+                (5 LOAD / 2 RECEIVE), across GURUNANDA and KARAKA pickups.
               </span>
             </div>
 
@@ -186,19 +186,22 @@ export default function DashboardPage() {
               {/* Column 1: Arnulfo Bay 4 Tasks */}
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] text-[#71717a] uppercase tracking-wider">
-                  Arnulfo Active Bay 4 Tasks (5)
+                  Arnulfo Active Bay 4 Tasks (7)
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <strong>DOCK53:</strong> TASK-5379622 (LOAD IN_PROGRESS)
+                  <strong>DOCK50:</strong> TASK-5381269 (LOAD IN_PROGRESS)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK54:</strong> TASK-5380820 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
+                  <strong>DOCK51:</strong> TASK-5381268 (LOAD IN_PROGRESS)
+                </span>
+                <span className="text-xs text-[#a1a1aa]">
+                  <strong>DOCK54:</strong> TASK-5382462 (LOAD NEW), TASK-5380820 (LOAD IN_PROGRESS), TASK-5338695 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <strong>DOCK55:</strong> TASK-5380438 + TASK-5378787 (RECEIVE IN_PROGRESS, KARAKA)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
-                  Total: 5 open tasks (3 LOAD / 2 RECEIVE). Arnulfo also has 2 facility
+                  Total: 7 open tasks (5 LOAD / 2 RECEIVE). Arnulfo also has 2 facility
                   general tasks, both NEEDS_APPROVAL; neither carries the queried description.
                 </span>
               </div>
@@ -209,16 +212,16 @@ export default function DashboardPage() {
                   Bay 4 Active Assignee Breakdown
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 5 active
+                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 7 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 3 active
+                  <span className="text-[#22c55e] font-semibold">Jorge Antonio Franco:</span> 2 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">RUFINO MUNGUIA:</span> 1 active
+                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 1 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#f59e0b] font-semibold">daira gonzalez / CANDY MENDEZ / Jorge Antonio Franco:</span> 1 active each
+                  <span className="text-[#f59e0b] font-semibold">DANIELA GONZALEZ / JEROME ARANDA / daira gonzalez:</span> 1 active each
                 </span>
               </div>
 
@@ -228,15 +231,15 @@ export default function DashboardPage() {
                   Bay 4 Customer Mix &amp; Status
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 10 tasks (83% of active)
+                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 11 tasks (85% of active)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 2 tasks (17% of active)
+                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 2 tasks (15% of active)
                 </span>
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    11 IN_PROGRESS (91.7%) / 1 NEW (8.3%)
+                    10 IN_PROGRESS (76.9%) / 3 NEW (23.1%)
                   </span>
                 </div>
               </div>
@@ -251,15 +254,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">8 Occupied / 1 Reserved / 14 Available</strong> - occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK55, DOCK59, DOCK69. Reserved (only NEW tasks): DOCK56.</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 12 total. 50.0% outbound / 50.0% inbound.</li>
-              <li>9 doors with at least one active task. 39.1% task-based occupancy (9/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 39 receipts with an appointmentTime on the September 29 facility-local (PT) day; 15 received (receipt status CLOSED) → 38.5% received.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 343d 10h 28m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 53d 7h 20m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 133 loads with an appointmentTime on the September 29 facility-local (PT) day (cumulative-load buckets: ≥ Sep 29 = 457, ≥ Sep 30 = 324 → day = 133). 101 loaded (LOADED or SHIPPED) → 75.9% loaded.</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 10 of 12 active tasks (83%). KARAKA, LLC has 2 (17%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 13; AVAILABLE = 8; RESERVED = 2 - DOCK56, DOCK58 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, September 29, 2026 23:50 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li><strong className="text-[#f4f4f6]">7 Occupied / 1 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK63, DOCK69. Reserved (only NEW tasks): DOCK59.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">7 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 13 total. 53.8% outbound / 46.2% inbound.</li>
+              <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 16 receipts with an appointmentTime on the October 1 facility-local (PT) day; 0 received (receipt status CLOSED) → 0.0% received.</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 344d 19h 6m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 54d 15h 58m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 127 loads with an appointmentTime on the October 1 facility-local (PT) day (cumulative-load buckets: ≥ Oct 01 = 319, ≥ Oct 02 = 192 → day = 127). 3 loaded (LOADED or SHIPPED) → 2.4% loaded.</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 13 active tasks (85%). KARAKA, LLC has 2 (15%).</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 5; RESERVED = 1 - DOCK59 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 1, 2026 08:27 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -269,7 +272,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: September 29, 2026 23:50 PT</span>
+          <span>Last refreshed: October 1, 2026 08:27 PT</span>
         </div>
       </footer>
     </div>
