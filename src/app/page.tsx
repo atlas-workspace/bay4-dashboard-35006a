@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; October 2, 2026 &nbsp;|&nbsp; Last refreshed: Oct 2 16:11 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 2, 2026 &nbsp;|&nbsp; Last refreshed: Oct 2 18:15 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -177,8 +177,8 @@ export default function DashboardPage() {
               <span className="text-xs text-[#a1a1aa] block mt-0.5">
                 Facility sweep of all 118 general tasks found 0 exact phrase matches (CLOSED 88 / NEEDS_APPROVAL 19 /
                 NEW 9 / IN_PROGRESS 2), so every task note, job description, and task-line field was scanned.
-                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: 8 active tasks
-                (6 LOAD / 2 RECEIVE), across GURUNANDA and KARAKA pickups.
+                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: 7 active tasks
+                (6 LOAD / 1 RECEIVE), across GURUNANDA and KARAKA pickups.
               </span>
             </div>
 
@@ -186,7 +186,7 @@ export default function DashboardPage() {
               {/* Column 1: Arnulfo Bay 4 Tasks */}
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] text-[#71717a] uppercase tracking-wider">
-                  Arnulfo Active Bay 4 Tasks (8)
+                  Arnulfo Active Bay 4 Tasks (7)
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
                   <strong>DOCK50:</strong> TASK-5381269 (LOAD IN_PROGRESS)
@@ -201,10 +201,10 @@ export default function DashboardPage() {
                   <strong>DOCK54:</strong> TASK-5382462 + TASK-5380820 (LOAD IN_PROGRESS), TASK-5338695 (LOAD IN_PROGRESS, endTime 2026-08-10 but unclosed ⚠ STALE)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <strong>DOCK55:</strong> TASK-5380438 + TASK-5378787 (RECEIVE IN_PROGRESS, KARAKA)
+                  <strong>DOCK55:</strong> TASK-5378787 (RECEIVE IN_PROGRESS, KARAKA)
                 </span>
                 <span className="text-xs text-[#71717a] mt-1 italic">
-                  Total: 8 open tasks (6 LOAD / 2 RECEIVE). Arnulfo also has 2 facility
+                  Total: 7 open tasks (6 LOAD / 1 RECEIVE). Arnulfo also has 2 facility
                   general tasks, both NEEDS_APPROVAL; neither carries the queried description.
                 </span>
               </div>
@@ -215,7 +215,7 @@ export default function DashboardPage() {
                   Bay 4 Active Assignee Breakdown
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 8 active
+                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 7 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#22c55e] font-semibold">Jorge Antonio Franco:</span> 2 active
@@ -237,15 +237,15 @@ export default function DashboardPage() {
                   Bay 4 Customer Mix &amp; Status
                 </span>
                 <span className="text-xs text-[#a1a1aa] mt-1">
-                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 11 tasks (84.6% of active)
+                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 11 tasks (91.7% of active)
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 2 tasks (15.4% of active)
+                  <span className="text-[#22c55e] font-semibold">KARAKA, LLC (ORG-585450):</span> 1 task (8.3% of active)
                 </span>
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    11 IN_PROGRESS (84.6%) / 2 NEW (15.4%)
+                    10 IN_PROGRESS (83.3%) / 2 NEW (16.7%)
                   </span>
                 </div>
               </div>
@@ -261,14 +261,14 @@ export default function DashboardPage() {
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
               <li><strong className="text-[#f4f4f6]">7 Occupied / 1 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK56, DOCK69; DOCK63 holds only a NEW task (Reserved).</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 13 total. 46.2% outbound / 53.8% inbound.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 12 total. 50.0% outbound / 50.0% inbound.</li>
               <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
               <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 30 receipts with an appointmentTime on the October 2 facility-local (PT) day; 11 received (receipt status CLOSED) → 36.7% received.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 2h 50m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 55d 23h 41m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 121 loads with an appointmentTime on the October 2 facility-local (PT) day (cumulative-load buckets: ≥ Oct 02 = 425, ≥ Oct 03 = 304 → day = 121). 90 loaded (LOADED or SHIPPED) → 74.4% loaded.</li>
-              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 13 active tasks (84.6%). KARAKA, LLC has 2 (15.4%).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 4h 53m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 56d 1h 45m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 118 loads with an appointmentTime on the October 2 facility-local (PT) day (cumulative-load buckets: ≥ Oct 02 = 440, ≥ Oct 03 = 322 → day = 118). 106 loaded (LOADED or SHIPPED) → 89.8% loaded.</li>
+              <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 12 active tasks (91.7%). KARAKA, LLC has 1 (8.3%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 18; AVAILABLE = 3; RESERVED = 2 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 2, 2026 16:11 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 2, 2026 18:15 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: October 2, 2026 16:11 PT</span>
+          <span>Last refreshed: October 2, 2026 18:15 PT</span>
         </div>
       </footer>
     </div>
