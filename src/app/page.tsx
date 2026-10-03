@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; October 2, 2026 &nbsp;|&nbsp; Last refreshed: Oct 2 18:15 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 3, 2026 &nbsp;|&nbsp; Last refreshed: Oct 3 09:06 PT
             </p>
           </div>
           {/* Facility badge */}
