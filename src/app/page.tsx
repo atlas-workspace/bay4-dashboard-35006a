@@ -245,7 +245,7 @@ export default function DashboardPage() {
                 <div className="mt-2 pt-2 border-t border-[#1e1e2a]">
                   <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>
                   <span className="text-xs text-[#a1a1aa] block mt-0.5">
-                    10 IN_PROGRESS (83.3%) / 2 NEW (16.7%)
+                    11 IN_PROGRESS (91.7%) / 1 NEW (8.3%)
                   </span>
                 </div>
               </div>
@@ -260,15 +260,15 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">7 Occupied / 1 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK56, DOCK69; DOCK63 holds only a NEW task (Reserved).</li>
+              <li><strong className="text-[#f4f4f6]">8 Occupied / 0 Reserved / 15 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK55, DOCK56, DOCK68, DOCK69. No door holds only a NEW task this pull, so Reserved is 0; DOCK63 is now Available.</li>
               <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 12 total. 50.0% outbound / 50.0% inbound.</li>
               <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 30 receipts with an appointmentTime on the October 2 facility-local (PT) day; 11 received (receipt status CLOSED) → 36.7% received.</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 4h 53m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 56d 1h 45m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 118 loads with an appointmentTime on the October 2 facility-local (PT) day (cumulative-load buckets: ≥ Oct 02 = 440, ≥ Oct 03 = 322 → day = 118). 106 loaded (LOADED or SHIPPED) → 89.8% loaded.</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 5 receipts with an appointmentTime on the October 3 facility-local (PT) day; 0 received (receipt status CLOSED) → 0.0% received so far (early Saturday; 98 further receipts are booked ≥ Oct 4).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 18h 0m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 56d 14h 52m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the October 3 facility-local (PT) day (cumulative-load buckets: ≥ Oct 03 = 322, ≥ Oct 04 = 322 → day = 0; no loads are booked for the Saturday). Nothing scheduled → nothing loaded.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 12 active tasks (91.7%). KARAKA, LLC has 1 (8.3%).</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 18; AVAILABLE = 3; RESERVED = 2 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 2, 2026 18:15 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 4; RESERVED = 2 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 3, 2026 07:22 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
