@@ -264,11 +264,11 @@ export default function DashboardPage() {
               <li>Active tasks: <strong className="text-[#7c3aed]">6 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">6 inbound (RECEIVE)</strong> = 12 total. 50.0% outbound / 50.0% inbound.</li>
               <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
               <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 5 receipts with an appointmentTime on the October 3 facility-local (PT) day; 0 received (receipt status CLOSED) → 0.0% received so far (early Saturday; 98 further receipts are booked ≥ Oct 4).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 18h 0m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 56d 14h 52m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 346d 19h 45m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 56d 16h 37m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
               <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the October 3 facility-local (PT) day (cumulative-load buckets: ≥ Oct 03 = 322, ≥ Oct 04 = 322 → day = 0; no loads are booked for the Saturday). Nothing scheduled → nothing loaded.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 12 active tasks (91.7%). KARAKA, LLC has 1 (8.3%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 4; RESERVED = 2 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 3, 2026 07:22 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 3, 2026 09:06 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: October 2, 2026 18:15 PT</span>
+          <span>Last refreshed: October 3, 2026 09:06 PT</span>
         </div>
       </footer>
     </div>
