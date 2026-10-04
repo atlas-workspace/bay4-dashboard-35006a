@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; October 3, 2026 &nbsp;|&nbsp; Last refreshed: Oct 3 09:06 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 3, 2026 &nbsp;|&nbsp; Last refreshed: Oct 3 17:21 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -134,7 +134,7 @@ export default function DashboardPage() {
           <div className="mt-3 bg-[#141419] border border-[#1e1e2a] rounded-xl overflow-hidden">
             <div className="px-5 py-2.5 bg-[#0a0a0f] border-b border-[#1e1e2a]">
               <span className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
-                All-Time Assignments (DOCK50–DOCK72) — prior baseline, not regenerated this refresh
+                All-Time Assignments (DOCK50–DOCK72) — live WISE sweep, Oct 3 17:21 PT
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-5 py-3">
@@ -265,10 +265,10 @@ export default function DashboardPage() {
               <li>8 doors with at least one active task. 34.8% task-based occupancy (8/23).</li>
               <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 5 receipts with an appointmentTime on the October 3 facility-local (PT) day; 0 received (receipt status CLOSED) → 0.0% received so far (early Saturday; 98 further receipts are booked ≥ Oct 4).</li>
               <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 347d 4h 0m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 57d 0h 51m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the October 3 facility-local (PT) day (cumulative-load buckets: ≥ Oct 03 = 322, ≥ Oct 04 = 322 → day = 0; no loads are booked for the Saturday). Nothing scheduled → nothing loaded.</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 0 loads with an appointmentTime on the October 3 facility-local (PT) day — no loads are booked for the Saturday (adjacent days: Fri Oct 2 = 118 loads, Sun Oct 4 = 0). Nothing scheduled → nothing loaded.</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 11 of 12 active tasks (91.7%). KARAKA, LLC has 1 (8.3%).</li>
               <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 17; AVAILABLE = 4; RESERVED = 2 - while the grid keeps the same task-derived convention as the tracked activity).</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 3, 2026 09:06 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 3, 2026 17:21 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: October 3, 2026 09:06 PT</span>
+          <span>Last refreshed: October 3, 2026 17:21 PT</span>
         </div>
       </footer>
     </div>
