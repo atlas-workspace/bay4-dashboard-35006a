@@ -80,6 +80,10 @@ assign_lines = "\n".join(
 mix = S["mix"]
 sch = S["schedule"]
 pct_in = (sch["inboundReceived"] / len(sch["receiptRows"])) * 100 if sch["receiptRows"] else 0.0
+# scheduled outbound = EVERY load whose appointmentTime falls in the facility-local day
+# (sch["outboundOrders"], the full paged result set) — not the truncated loadRowsPreview slice.
+sched_out = sch.get("outboundOrders") or 0
+pct_out = (sch["outboundLoaded"] / sched_out) * 100 if sched_out else 0.0
 
 data_ts = f'''/**
  * Bay 4 Assignments — Authoritative Operational Data
@@ -175,15 +179,15 @@ export const activeInboundOutboundMix: MixMetric[] = [
 
 // Schedule: facility-local {BOOT} ({WEEKDAY}).
 // Inbound = receipts with appointmentTime on the day → {len(sch["receiptRows"])} scheduled; received = receipts with receivedTime → {sch["inboundReceived"]} ({pct_in:.1f}%).
-// Outbound = loads with appointmentTime on the day bucket → {len(sch["loadRowsPreview"])} scheduled ({WEEKDAY} — no loads booked);
-//     loaded = load status LOADED or SHIPPED → {sch["outboundLoaded"]} (no scheduled outbounds to load)
+// Outbound = loads with appointmentTime on the day bucket → {sched_out} scheduled;
+//     loaded = load status LOADED or SHIPPED → {sch["outboundLoaded"]} ({pct_out:.1f}%)
 export const scheduleAvailable = true;
 export const scheduledInboundOrders = {len(sch["receiptRows"])};
 export const scheduledInboundReceived = {sch["inboundReceived"]};
-export const scheduledOutboundOrders = {len(sch["loadRowsPreview"])};
+export const scheduledOutboundOrders = {sched_out};
 export const scheduledOutboundLoaded = {sch["outboundLoaded"]};
 export const pctScheduledInboundReceived = scheduledInboundOrders > 0 ? (scheduledInboundReceived / scheduledInboundOrders) * 100 : 0; // {pct_in:.1f}%
-export const pctScheduledOutboundLoaded = scheduledOutboundOrders > 0 ? (scheduledOutboundLoaded / scheduledOutboundOrders) * 100 : 0;   // n/a (0 scheduled)
+export const pctScheduledOutboundLoaded = scheduledOutboundOrders > 0 ? (scheduledOutboundLoaded / scheduledOutboundOrders) * 100 : 0;   // {pct_out:.1f}%
 
 // Facility-wide appointment context — unavailable
 export const facilityWideReceiptsCreated = 0;

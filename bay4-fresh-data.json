@@ -1,12 +1,12 @@
 {
-  "pulledAtPT": "2026-10-04 17:25 PT",
-  "pulledAtUTC": "2026-10-05 00:25 UTC",
-  "snapshotUTC": "2026-10-05T00:25:05Z",
-  "localDay": "2026-10-04",
+  "pulledAtPT": "2026-10-05 09:03 PT",
+  "pulledAtUTC": "2026-10-05 16:03 UTC",
+  "snapshotUTC": "2026-10-05T16:03:05Z",
+  "localDay": "2026-10-05",
   "facility": "Valley View (LT_F1)",
   "tenant": "LT",
   "scope": "Bay 4 DOCK50-DOCK72",
-  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-04 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-05T00:25:05Z snapshot instant.",
+  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-05 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-05T16:03:05Z snapshot instant.",
   "doorIdMap": {
     "DOCK50": "570",
     "DOCK51": "554",
@@ -42,19 +42,18 @@
       "DOCK50",
       "DOCK54"
     ],
-    "activeTasks": 12,
-    "activeLoad": 6,
+    "activeTasks": 13,
+    "activeLoad": 7,
     "activeReceive": 6,
-    "scheduledInboundOrders": 0,
-    "scheduledInboundReceived": 0,
-    "pctScheduledInboundReceived": 0.0,
-    "scheduledOutboundOrders": 0,
-    "scheduledOutboundLoaded": 0,
-    "pctScheduledOutboundLoaded": null,
+    "scheduledInboundOrders": 22,
+    "scheduledInboundReceived": 1,
+    "pctScheduledInboundReceived": 4.5,
+    "scheduledOutboundOrders": 160,
+    "scheduledOutboundLoaded": 4,
+    "pctScheduledOutboundLoaded": 2.5,
     "nativeDockStatus": {
-      "OCCUPIED": 17,
-      "AVAILABLE": 4,
-      "RESERVED": 2
+      "OCCUPIED": 18,
+      "AVAILABLE": 5
     }
   },
   "assigneeCounts": [
@@ -65,6 +64,10 @@
     {
       "assignee": "Jorge Antonio Franco",
       "taskCount": 2
+    },
+    {
+      "assignee": "DANIEL BELTRAN",
+      "taskCount": 1
     },
     {
       "assignee": "DANIELA GONZALEZ",
@@ -80,12 +83,12 @@
     }
   ],
   "allTimeAssigneeCounts": {
-    "closedTotal": 3943,
+    "closedTotal": 3944,
     "distinct": 83,
     "top": [
       {
         "assignee": "DANIEL BELTRAN",
-        "taskCount": 1009
+        "taskCount": 1010
       },
       {
         "assignee": "ARNULFO MUNGUIA",
@@ -100,7 +103,7 @@
         "taskCount": 151
       },
       {
-        "assignee": "RENATO ROSALES GARCIA",
+        "assignee": "Renato Rosales",
         "taskCount": 151
       },
       {
@@ -141,7 +144,7 @@
         "TASK-5090739",
         "TASK-5381269"
       ],
-      "duration": "348d 4h 3m",
+      "duration": "348d 19h 41m",
       "anomaly": true,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -154,7 +157,7 @@
           "customerId": "ORG-655875",
           "start": "2025-10-21T20:21:14",
           "end": "2025-10-22T17:42:01",
-          "duration": "348d 4h 3m"
+          "duration": "348d 19h 41m"
         },
         {
           "id": "TASK-5381269",
@@ -165,7 +168,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-29T22:29:10",
           "end": null,
-          "duration": "5d 1h 55m"
+          "duration": "5d 17h 33m"
         }
       ]
     },
@@ -182,7 +185,7 @@
       "taskIds": [
         "TASK-5381268"
       ],
-      "duration": "5d 1h 58m",
+      "duration": "5d 17h 36m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -195,7 +198,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-29T22:26:17",
           "end": null,
-          "duration": "5d 1h 58m"
+          "duration": "5d 17h 36m"
         }
       ]
     },
@@ -208,7 +211,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
+      "nativeDockStatus": "OCCUPIED",
       "tasks": []
     },
     {
@@ -224,7 +227,7 @@
       "taskIds": [
         "TASK-5382457"
       ],
-      "duration": "4d 1h 36m",
+      "duration": "4d 17h 14m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -237,7 +240,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-30T22:48:11",
           "end": null,
-          "duration": "4d 1h 36m"
+          "duration": "4d 17h 14m"
         }
       ]
     },
@@ -256,7 +259,7 @@
         "TASK-5380820",
         "TASK-5382462"
       ],
-      "duration": "58d 0h 55m",
+      "duration": "58d 16h 33m",
       "anomaly": true,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -269,7 +272,7 @@
           "customerId": "ORG-655875",
           "start": "2026-08-07T23:29:29",
           "end": "2026-08-10T16:27:26",
-          "duration": "58d 0h 55m"
+          "duration": "58d 16h 33m"
         },
         {
           "id": "TASK-5380820",
@@ -280,7 +283,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-29T19:07:55",
           "end": null,
-          "duration": "5d 5h 17m"
+          "duration": "5d 20h 55m"
         },
         {
           "id": "TASK-5382462",
@@ -291,7 +294,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-01T16:22:57",
           "end": null,
-          "duration": "3d 8h 2m"
+          "duration": "3d 23h 40m"
         }
       ]
     },
@@ -308,9 +311,9 @@
       "taskIds": [
         "TASK-5378787"
       ],
-      "duration": "6d 8h 33m",
+      "duration": "7d 0h 11m",
       "anomaly": false,
-      "nativeDockStatus": "RESERVED",
+      "nativeDockStatus": "AVAILABLE",
       "tasks": [
         {
           "id": "TASK-5378787",
@@ -321,7 +324,7 @@
           "customerId": "ORG-585450",
           "start": "2026-09-28T15:51:27",
           "end": null,
-          "duration": "6d 8h 33m"
+          "duration": "7d 0h 11m"
         }
       ]
     },
@@ -330,15 +333,17 @@
       "locationId": "575",
       "status": "Occupied",
       "assignees": [
-        "CANDY MENDEZ"
+        "CANDY MENDEZ",
+        "DANIEL BELTRAN"
       ],
       "customers": [
         "GURUNANDA, LLC"
       ],
       "taskIds": [
-        "TASK-5384550"
+        "TASK-5384550",
+        "TASK-5385704"
       ],
-      "duration": "2d 4h 3m",
+      "duration": "2d 19h 41m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -351,7 +356,18 @@
           "customerId": "ORG-655875",
           "start": "2026-10-02T20:21:25",
           "end": null,
-          "duration": "2d 4h 3m"
+          "duration": "2d 19h 41m"
+        },
+        {
+          "id": "TASK-5385704",
+          "type": "LOAD",
+          "status": "IN_PROGRESS",
+          "assignee": "DANIEL BELTRAN",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-05T15:56:36",
+          "end": null,
+          "duration": "0h 6m"
         }
       ]
     },
@@ -388,7 +404,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "RESERVED",
+      "nativeDockStatus": "OCCUPIED",
       "tasks": []
     },
     {
@@ -500,7 +516,7 @@
       "taskIds": [
         "TASK-5384940"
       ],
-      "duration": "1d 19h 38m",
+      "duration": "2d 11h 16m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -513,7 +529,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-03T04:46:58",
           "end": null,
-          "duration": "1d 19h 38m"
+          "duration": "2d 11h 16m"
         }
       ]
     },
@@ -531,7 +547,7 @@
         "TASK-5377286",
         "TASK-5381972"
       ],
-      "duration": "9d 8h 46m",
+      "duration": "10d 0h 24m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -544,7 +560,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-25T15:38:25",
           "end": null,
-          "duration": "9d 8h 46m"
+          "duration": "10d 0h 24m"
         },
         {
           "id": "TASK-5381972",
@@ -580,7 +596,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "OCCUPIED",
+      "nativeDockStatus": "AVAILABLE",
       "tasks": []
     },
     {
@@ -697,6 +713,17 @@
       "endTime": null
     },
     {
+      "taskId": "TASK-5385704",
+      "type": "LOAD",
+      "status": "IN_PROGRESS",
+      "dockName": "DOCK56",
+      "assigneeUserName": "DANIEL BELTRAN",
+      "customerId": "ORG-655875",
+      "customerName": "GURUNANDA, LLC",
+      "startTime": "2026-10-05T15:56:36",
+      "endTime": null
+    },
+    {
       "taskId": "TASK-5384940",
       "type": "RECEIVE",
       "status": "IN_PROGRESS",
@@ -760,19 +787,174 @@
     "result": "No task literally named 'Guru live out / in assign to Arnulfo' exists in WISE - 0 exact matches across all 118 facility general tasks; every task note, job description, and task-line field was scanned. Closest real match - ARNULFO MUNGUIA's Bay 4 DOCK50-DOCK72 assigned activity: 7 active tasks (6 LOAD / 1 RECEIVE) across GURUNANDA and KARAKA."
   },
   "schedule": {
-    "window": "2026-10-04 00:00:00 - 2026-10-04 23:59:59 (facility-local America/Los_Angeles)",
+    "window": "2026-10-05 00:00:00 - 2026-10-05 23:59:59 (facility-local America/Los_Angeles)",
     "inbound": {
-      "scheduled": 0,
-      "received": 0,
-      "pctReceived": 0.0,
+      "scheduled": 22,
+      "received": 1,
+      "pctReceived": 4.5,
       "definition": "receipts with appointmentTime on the day; received = receipts with receivedTime set",
-      "rows": []
+      "rows": [
+        {
+          "id": "RN-5010653",
+          "status": "IN_PROGRESS",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-540512"
+        },
+        {
+          "id": "RN-193445",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T18:00:00",
+          "receivedTime": null,
+          "customer": "ORG-606771"
+        },
+        {
+          "id": "RN-193438",
+          "status": "CLOSED",
+          "appointmentTime": "2026-10-05T21:00:00",
+          "receivedTime": "2026-10-01T19:01:42",
+          "customer": "ORG-625904"
+        },
+        {
+          "id": "RN-193436",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T21:00:00",
+          "receivedTime": null,
+          "customer": "ORG-625907"
+        },
+        {
+          "id": "RN-193425",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T17:00:00",
+          "receivedTime": null,
+          "customer": "GURUNANDA, LLC"
+        },
+        {
+          "id": "RN-193416",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T19:00:00",
+          "receivedTime": null,
+          "customer": "ORG-685351"
+        },
+        {
+          "id": "RN-193350",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-368834"
+        },
+        {
+          "id": "RN-5010576",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T20:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-193213",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-34557"
+        },
+        {
+          "id": "RN-193212",
+          "status": "IN_PROGRESS",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-34557"
+        },
+        {
+          "id": "RN-5010501",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T20:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-193012",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-616507"
+        },
+        {
+          "id": "RN-193008",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T21:00:00",
+          "receivedTime": null,
+          "customer": "ORG-616507"
+        },
+        {
+          "id": "RN-192945",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-625904"
+        },
+        {
+          "id": "RN-192944",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-625907"
+        },
+        {
+          "id": "RN-192943",
+          "status": "IMPORTED",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-625900"
+        },
+        {
+          "id": "RN-5010337",
+          "status": "OPEN",
+          "appointmentTime": "2026-10-05T20:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-5010331",
+          "status": "IN_PROGRESS",
+          "appointmentTime": "2026-10-05T15:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-5010330",
+          "status": "OPEN",
+          "appointmentTime": "2026-10-05T19:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-5010329",
+          "status": "OPEN",
+          "appointmentTime": "2026-10-05T19:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-5010328",
+          "status": "OPEN",
+          "appointmentTime": "2026-10-05T18:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        },
+        {
+          "id": "RN-5010175",
+          "status": "OPEN",
+          "appointmentTime": "2026-10-05T19:00:00",
+          "receivedTime": null,
+          "customer": "ORG-655338"
+        }
+      ]
     },
     "outbound": {
-      "scheduled": 0,
-      "loaded": 0,
+      "scheduled": 8,
+      "loaded": 4,
       "pctLoaded": null,
-      "definition": "loads with appointmentTime in the 2026-10-04 facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."
+      "definition": "loads with appointmentTime in the 2026-10-05 facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."
     }
   }
 }

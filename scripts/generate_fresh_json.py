@@ -16,6 +16,9 @@ nat = {}
 for d in doors:
     nat[d["nativeDockStatus"]] = nat.get(d["nativeDockStatus"], 0) + 1
 pct_in = (sch["inboundReceived"] / len(sch["receiptRows"])) * 100 if sch["receiptRows"] else 0.0
+# Scheduled outbound = the FULL day bucket (sch["outboundOrders"]), not the truncated preview slice.
+sched_out = sch.get("outboundOrders") or 0
+pct_out = round((sch["outboundLoaded"] / sched_out) * 100, 1) if sched_out else None
 
 out = {
     "pulledAtPT": PULLED_PT,
@@ -42,9 +45,9 @@ out = {
         "scheduledInboundOrders": len(sch["receiptRows"]),
         "scheduledInboundReceived": sch["inboundReceived"],
         "pctScheduledInboundReceived": round(pct_in, 1),
-        "scheduledOutboundOrders": len(sch["loadRowsPreview"]),
+        "scheduledOutboundOrders": sched_out,
         "scheduledOutboundLoaded": sch["outboundLoaded"],
-        "pctScheduledOutboundLoaded": None,
+        "pctScheduledOutboundLoaded": pct_out,
         "nativeDockStatus": nat,
     },
     "assigneeCounts": [{"assignee": a["name"], "taskCount": a["taskCount"]} for a in S["assigneeSummaries"]],
