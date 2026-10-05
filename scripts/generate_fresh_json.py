@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """Emit bay4-fresh-data.json (and src/ mirror) from the live WISE snapshot."""
 import json
+from datetime import datetime, timezone, timedelta
 
 S = json.load(open("wise_snapshot.json"))
+_snap = datetime.strptime(S["snapshotUtc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+_la = _snap.astimezone(timezone(timedelta(hours=-7)))
+PULLED_PT = f"{_la.strftime('%Y-%m-%d')} {_la.strftime('%H:%M')} PT"
+PULLED_UTC = f"{_snap.strftime('%Y-%m-%d %H:%M')} UTC"
 doors = S["doors"]
 kpi = S["kpi"]
 mix = S["mix"]
@@ -13,14 +18,14 @@ for d in doors:
 pct_in = (sch["inboundReceived"] / len(sch["receiptRows"])) * 100 if sch["receiptRows"] else 0.0
 
 out = {
-    "pulledAtPT": "2026-10-03 17:21 PT",
-    "pulledAtUTC": "2026-10-04 00:21 UTC",
+    "pulledAtPT": PULLED_PT,
+    "pulledAtUTC": PULLED_UTC,
     "snapshotUTC": S["snapshotUtc"],
     "localDay": S["bootDay"],
     "facility": "Valley View (LT_F1)",
     "tenant": "LT",
     "scope": "Bay 4 DOCK50-DOCK72",
-    "note": ("All values are live WISE/WMS reads (read-only) for the 2026-10-03 facility-local "
+    "note": (f"All values are live WISE/WMS reads (read-only) for the {S['bootDay']} facility-local "
              "(America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; "
              f"door durations are elapsed as-of the {S['snapshotUtc']} snapshot instant."),
     "doorIdMap": S["doorIdMap"],
@@ -77,7 +82,7 @@ out = {
                    f"{S['arnulfo']['count']} active tasks ({S['arnulfo']['load']} LOAD / {S['arnulfo']['receive']} RECEIVE) across GURUNANDA and KARAKA."),
     },
     "schedule": {
-        "window": "2026-10-03 00:00:00 - 2026-10-03 23:59:59 (facility-local America/Los_Angeles)",
+        "window": f"{S['bootDay']} 00:00:00 - {S['bootDay']} 23:59:59 (facility-local America/Los_Angeles)",
         "inbound": {
             "scheduled": len(sch["receiptRows"]), "received": sch["inboundReceived"],
             "pctReceived": round(pct_in, 1),
@@ -87,8 +92,7 @@ out = {
         "outbound": {
             "scheduled": len(sch["loadRowsPreview"]), "loaded": sch["outboundLoaded"],
             "pctLoaded": None,
-            "definition": ("loads with appointmentTime in the 2026-10-03 facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED. "
-                           "0 rows for the Saturday (adjacent days: Fri Oct 2 = 118, Sun Oct 4 = 0)."),
+            "definition": (f"loads with appointmentTime in the {S['bootDay']} facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."),
         },
     },
 }

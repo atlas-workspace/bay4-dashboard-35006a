@@ -14,8 +14,10 @@ HDRS = {
     "Content-Type": "application/json",
 }
 PAGE_CAP = 200
-BOOT = "2026-10-03"                       # facility-local operating day (America/Los_Angeles)
 LA = timezone(timedelta(hours=-7))        # PDT
+_BOOT_DT = datetime.now(timezone.utc).astimezone(LA)
+BOOT = _BOOT_DT.strftime("%Y-%m-%d")      # facility-local operating day (America/Los_Angeles)
+BOOT_NEXT = (_BOOT_DT + timedelta(days=1)).strftime("%Y-%m-%d")
 
 
 def post(path, body, tries=4):
@@ -91,7 +93,7 @@ srecv, srecv_total = paged("/wms-bam/inbound/receipt/search-by-paging",
 cum_from, cum_from_total = paged("/wms-bam/outbound/load/search-by-paging",
                                  {"appointmentTimePeriod": [f"{BOOT}T00:00:00", f"{BOOT}T00:00:00"]})
 cum_next, cum_next_total = paged("/wms-bam/outbound/load/search-by-paging",
-                                 {"appointmentTimePeriod": [f"2026-10-04T00:00:00", f"2026-10-04T00:00:00"]})
+                                 {"appointmentTimePeriod": [f"{BOOT_NEXT}T00:00:00", f"{BOOT_NEXT}T00:00:00"]})
 
 # 4) all-time closed per Bay-4 door (for all-time assignee summary)
 closed = []

@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """Render src/lib/data.ts and the JSON artifacts from the live WISE snapshot."""
 import json, re
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 S = json.load(open("wise_snapshot.json"))
 doors = S["doors"]
 kpi = S["kpi"]
-LA_STAMP = S["refreshStampLA"]                        # "Oct 03 ~17:21 PDT"
+LA_STAMP = S["refreshStampLA"]                        # "Oct 04 ~17:23 PDT"
 ISO = S["snapshotUtc"]
-ISO_HUMAN = "Oct 3 17:21 PT"
-DATE_LONG = "October 3, 2026"
+_la = datetime.strptime(ISO, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=-7)))
+ISO_HUMAN = f"{_la.strftime('%b')} {_la.day} {_la.strftime('%H:%M')} PT"      # "Oct 4 17:23 PT"
+DATE_LONG = f"{_la.strftime('%B')} {_la.day}, {_la.strftime('%Y')}"          # "October 4, 2026"
+BOOT = S["bootDay"]                                                           # "2026-10-04"
+_boot_dt = datetime.strptime(BOOT, "%Y-%m-%d")
+BOOT_LONG = f"{_boot_dt.strftime('%B')} {_boot_dt.day}, {_boot_dt.strftime('%Y')}"
+WEEKDAY = _boot_dt.strftime("%A")
+GTOTAL = S["assignedActivity"]["facilityGeneralTaskTotal"]
 
 # ---- helpers -------------------------------------------------------------
 def jassignees(d):
@@ -79,17 +85,17 @@ data_ts = f'''/**
  * Bay 4 Assignments — Authoritative Operational Data
  * Valley View Warehouse (LT_F1), DOCK50–DOCK72
  *
- * TASK DATA: Refreshed Oct 3 17:21 PT (live WISE/WMS APIs, read-only)
+ * TASK DATA: Refreshed {ISO_HUMAN} (live WISE/WMS APIs, read-only)
  *   Sources:
  *     - /wms-bam/wms-location/search-by-paging        — resolved DOCK50–DOCK72 → location IDs (23 doors, re-verified)
  *     - /wms-bam/outbound/load-task/search-by-paging  — active load tasks (status NEW + IN_PROGRESS, dockId filter)
  *     - /wms-bam/inbound/receive-task/search-by-paging— active receive tasks (status NEW + IN_PROGRESS, dockId filter)
- *     - /wms-bam/inbound/receipt/search-by-paging     — scheduled inbounds (appointmentTime on the 2026-10-03 facility-local PT day)
- *     - /wms-bam/outbound/load/search-by-paging       — scheduled outbounds (appointmentTime bucket for the 2026-10-03 PT day)
- *     - /wms-bam/task/general-task/search-by-paging   — facility general-task sweep (118 tasks) for the named Assigned Activity
+ *     - /wms-bam/inbound/receipt/search-by-paging     — scheduled inbounds (appointmentTime on the {BOOT} facility-local PT day)
+ *     - /wms-bam/outbound/load/search-by-paging       — scheduled outbounds (appointmentTime bucket for the {BOOT} PT day)
+ *     - /wms-bam/task/general-task/search-by-paging   — facility general-task sweep ({GTOTAL} tasks) for the named Assigned Activity
  *   item-time-zone: America/Los_Angeles → appointment-day buckets are the FACILITY-LOCAL (PT) day.
  *
- *   SNAPSHOT INSTANT: {ISO} (Oct 3 17:21 PT).
+ *   SNAPSHOT INSTANT: {ISO} ({ISO_HUMAN}).
  *   Scope: tenant LT, facility LT_F1 (x-facility-id: LT_F1).
  *   Open / active = NEW + IN_PROGRESS. Door duration = snapshot instant − earliest IN_PROGRESS startTime on the door.
  *
@@ -167,9 +173,9 @@ export const activeInboundOutboundMix: MixMetric[] = [
   {{ label: "Inbound", count: {mix["inbound"]}, total: {mix["total"]} }},
 ];
 
-// Schedule: facility-local 2026-10-03 (Saturday).
+// Schedule: facility-local {BOOT} ({WEEKDAY}).
 // Inbound = receipts with appointmentTime on the day → {len(sch["receiptRows"])} scheduled; received = receipts with receivedTime → {sch["inboundReceived"]} ({pct_in:.1f}%).
-// Outbound = loads with appointmentTime on the day bucket → {len(sch["loadRowsPreview"])} scheduled (Saturday — no loads booked);
+// Outbound = loads with appointmentTime on the day bucket → {len(sch["loadRowsPreview"])} scheduled ({WEEKDAY} — no loads booked);
 //     loaded = load status LOADED or SHIPPED → {sch["outboundLoaded"]} (no scheduled outbounds to load)
 export const scheduleAvailable = true;
 export const scheduledInboundOrders = {len(sch["receiptRows"])};
