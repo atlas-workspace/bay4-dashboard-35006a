@@ -2,7 +2,7 @@
  * Bay 4 Assignments — Authoritative Operational Data
  * Valley View Warehouse (LT_F1), DOCK50–DOCK72
  *
- * TASK DATA: Refreshed Oct 8 07:20 PT (live WISE/WMS APIs, read-only)
+ * TASK DATA: Refreshed Oct 8 08:37 PT (live WISE/WMS APIs, read-only)
  *   Sources:
  *     - /wms-bam/wms-location/search-by-paging        — resolved DOCK50–DOCK72 → location IDs (23 doors, re-verified)
  *     - /wms-bam/outbound/load-task/search-by-paging  — active load tasks (status NEW + IN_PROGRESS, dockId filter)
@@ -12,7 +12,7 @@
  *     - /wms-bam/task/general-task/search-by-paging   — facility general-task sweep (120 tasks) for the named Assigned Activity
  *   item-time-zone: America/Los_Angeles → appointment-day buckets are the FACILITY-LOCAL (PT) day.
  *
- *   SNAPSHOT INSTANT: 2026-10-08T14:20:11Z (Oct 8 07:20 PT).
+ *   SNAPSHOT INSTANT: 2026-10-08T15:37:37Z (Oct 8 08:37 PT).
  *   Scope: tenant LT, facility LT_F1 (x-facility-id: LT_F1).
  *   Open / active = NEW + IN_PROGRESS. Door duration = snapshot instant − earliest IN_PROGRESS startTime on the door.
  *
@@ -50,15 +50,15 @@ export const TOTAL_DOORS = 23;
 
 // Door utilization — task-derived. "Occupied" = ≥1 IN_PROGRESS task;
 // "Reserved" = only NEW tasks; "Available" = no active task.
-// Duration = as-of 2026-10-08T14:20:11Z minus the earliest IN_PROGRESS task startTime on the door.
+// Duration = as-of 2026-10-08T15:37:37Z minus the earliest IN_PROGRESS task startTime on the door.
 // anomaly = the door carries an IN_PROGRESS task whose endTime is already set (ended but never closed).
 export const doors: DoorRecord[] = [
   // ─── OCCUPIED — doors with IN_PROGRESS tasks (5 doors) ───
-  { door: "DOCK50", status: "Occupied", assignee: "daira gonzalez", customer: "GURUNANDA, LLC", taskIds: ["TASK-5090739"], duration: "351d 17h 58m", anomaly: true },
-  { door: "DOCK51", status: "Occupied", assignee: "ARNULFO MUNGUIA / DANIEL BELTRAN", customer: "GURUNANDA, LLC", taskIds: ["TASK-5381268", "TASK-5388952"], duration: "8d 15h 53m", anomaly: false },
-  { door: "DOCK53", status: "Occupied", assignee: "ARNULFO MUNGUIA", customer: "GURUNANDA, LLC", taskIds: ["TASK-5382457"], duration: "7d 15h 32m", anomaly: false },
-  { door: "DOCK54", status: "Occupied", assignee: "ARNULFO MUNGUIA", customer: "GURUNANDA, LLC", taskIds: ["TASK-5338695", "TASK-5382462", "TASK-5387292"], duration: "61d 14h 50m", anomaly: true },
-  { door: "DOCK68", status: "Occupied", assignee: "Jorge Antonio Franco", customer: "GURUNANDA, LLC", taskIds: ["TASK-5388864"], duration: "17h 55m", anomaly: false },
+  { door: "DOCK50", status: "Occupied", assignee: "daira gonzalez", customer: "GURUNANDA, LLC", taskIds: ["TASK-5090739"], duration: "351d 19h 16m", anomaly: true },
+  { door: "DOCK51", status: "Occupied", assignee: "ARNULFO MUNGUIA / DANIEL BELTRAN", customer: "GURUNANDA, LLC", taskIds: ["TASK-5381268", "TASK-5388952"], duration: "8d 17h 11m", anomaly: false },
+  { door: "DOCK53", status: "Occupied", assignee: "ARNULFO MUNGUIA / DANIEL BELTRAN", customer: "GURUNANDA, LLC", taskIds: ["TASK-5382457", "TASK-5389422"], duration: "7d 16h 49m", anomaly: false },
+  { door: "DOCK54", status: "Occupied", assignee: "ARNULFO MUNGUIA", customer: "GURUNANDA, LLC", taskIds: ["TASK-5338695", "TASK-5382462", "TASK-5387292"], duration: "61d 16h 8m", anomaly: true },
+  { door: "DOCK68", status: "Occupied", assignee: "Jorge Antonio Franco", customer: "GURUNANDA, LLC", taskIds: ["TASK-5388864"], duration: "19h 12m", anomaly: false },
 
   // ─── AVAILABLE — no active tasks (18 doors) ───
   { door: "DOCK52", status: "Reserved", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
@@ -92,24 +92,24 @@ export const kpiMetrics: KpiMetric[] = [
   { label: "Task Occupancy Rate", value: `${((doorsWithTasks / TOTAL_DOORS) * 100).toFixed(1)}%`, numerator: doorsWithTasks, denominator: TOTAL_DOORS, percentage: (doorsWithTasks / TOTAL_DOORS) * 100 },
 ];
 
-// Active assignee task counts - Bay 4 DOCK50-DOCK72, task-level assignee mapping (11 tasks)
+// Active assignee task counts - Bay 4 DOCK50-DOCK72, task-level assignee mapping (12 tasks)
 export const assigneeSummaries: AssigneeSummary[] = [
   { name: "ARNULFO MUNGUIA", taskCount: 5 },
+  { name: "DANIEL BELTRAN", taskCount: 2 },
   { name: "JULIO CESAR ALVARADO", taskCount: 2 },
   { name: "Jorge Antonio Franco", taskCount: 2 },
-  { name: "DANIEL BELTRAN", taskCount: 1 },
   { name: "daira gonzalez", taskCount: 1 },
 ];
 
 // All-time CLOSED LOAD + RECEIVE task counts at Bay 4 doors, by assignee.
-// Live WISE sweep (per-door, statuses CLOSED + FORCE_CLOSED): 3982 closed tasks
-// (2922 LOAD / 1060 RECEIVE), 83 distinct assignees.
+// Live WISE sweep (per-door, statuses CLOSED + FORCE_CLOSED): 3983 closed tasks
+// (2923 LOAD / 1060 RECEIVE), 83 distinct assignees.
 export const allTimeAssigneeSummaries: AssigneeSummary[] = [
-  { name: "DANIEL BELTRAN", taskCount: 1029 },
+  { name: "DANIEL BELTRAN", taskCount: 1030 },
   { name: "ARNULFO MUNGUIA", taskCount: 1012 },
   { name: "DANIELA GONZALEZ", taskCount: 426 },
   { name: "GEORGE LC BROWN", taskCount: 151 },
-  { name: "renato rosales", taskCount: 151 },
+  { name: "Renato Rosales Garcia", taskCount: 151 },
   { name: "Caren Cubides", taskCount: 147 },
   { name: "Fatima Ponce", taskCount: 122 },
   { name: "JULIO CESAR ALVARADO", taskCount: 113 },
@@ -117,28 +117,28 @@ export const allTimeAssigneeSummaries: AssigneeSummary[] = [
   { name: "David Ramirez Selva", taskCount: 76 },
 ];
 
-// Mix: 6 LOAD (outbound) + 5 RECEIVE (inbound) = 11 active tasks at Bay 4 doors
+// Mix: 7 LOAD (outbound) + 5 RECEIVE (inbound) = 12 active tasks at Bay 4 doors
 export const inboundOutboundMix: MixMetric[] = [
-  { label: "Outbound", count: 6, total: 11 },
-  { label: "Inbound", count: 5, total: 11 },
+  { label: "Outbound", count: 7, total: 12 },
+  { label: "Inbound", count: 5, total: 12 },
 ];
 
 export const activeInboundOutboundMix: MixMetric[] = [
-  { label: "Outbound", count: 6, total: 11 },
-  { label: "Inbound", count: 5, total: 11 },
+  { label: "Outbound", count: 7, total: 12 },
+  { label: "Inbound", count: 5, total: 12 },
 ];
 
 // Schedule: facility-local 2026-10-08 (Thursday).
 // Inbound = receipts with appointmentTime on the day → 38 scheduled; received = receipts with receivedTime → 2 (5.3%).
-// Outbound = loads with appointmentTime on the day bucket → 101 scheduled;
-//     loaded = load status LOADED or SHIPPED → 2 (2.0%)
+// Outbound = loads with appointmentTime on the day bucket → 103 scheduled;
+//     loaded = load status LOADED or SHIPPED → 2 (1.9%)
 export const scheduleAvailable = true;
 export const scheduledInboundOrders = 38;
 export const scheduledInboundReceived = 2;
-export const scheduledOutboundOrders = 101;
+export const scheduledOutboundOrders = 103;
 export const scheduledOutboundLoaded = 2;
 export const pctScheduledInboundReceived = scheduledInboundOrders > 0 ? (scheduledInboundReceived / scheduledInboundOrders) * 100 : 0; // 5.3%
-export const pctScheduledOutboundLoaded = scheduledOutboundOrders > 0 ? (scheduledOutboundLoaded / scheduledOutboundOrders) * 100 : 0;   // 2.0%
+export const pctScheduledOutboundLoaded = scheduledOutboundOrders > 0 ? (scheduledOutboundLoaded / scheduledOutboundOrders) * 100 : 0;   // 1.9%
 
 // Facility-wide appointment context — unavailable
 export const facilityWideReceiptsCreated = 0;
@@ -149,18 +149,19 @@ export const facilityWideLoadsShipped = 0;
 // Door occupancy duration: available from task startTime
 export const doorDurationsAvailable = true;
 
-// Active task records from fresh WISE data (2026-10-08T14:20:11Z snapshot)
-// 11 active tasks: 6 LOAD (outbound) + 5 RECEIVE (inbound)
+// Active task records from fresh WISE data (2026-10-08T15:37:37Z snapshot)
+// 12 active tasks: 7 LOAD (outbound) + 5 RECEIVE (inbound)
 export const assignments: TaskRecord[] = [
-  { taskId: "TASK-5090739", dns: "RECEIVE IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (351d 17h 58m) \u26a0 STALE", assignee: "daira gonzalez", door: "DOCK50" },
-  { taskId: "TASK-5381268", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (8d 15h 53m)", assignee: "ARNULFO MUNGUIA", door: "DOCK51" },
-  { taskId: "TASK-5388952", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (16h 27m)", assignee: "DANIEL BELTRAN", door: "DOCK51" },
+  { taskId: "TASK-5090739", dns: "RECEIVE IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (351d 19h 16m) \u26a0 STALE", assignee: "daira gonzalez", door: "DOCK50" },
+  { taskId: "TASK-5381268", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (8d 17h 11m)", assignee: "ARNULFO MUNGUIA", door: "DOCK51" },
+  { taskId: "TASK-5388952", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (17h 44m)", assignee: "DANIEL BELTRAN", door: "DOCK51" },
   { taskId: "TASK-5389140", dns: "RECEIVE NEW", customer: "ORG-40858", pieces: "NEW \u2014 not started", assignee: "JULIO CESAR ALVARADO", door: "DOCK52" },
-  { taskId: "TASK-5382457", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (7d 15h 32m)", assignee: "ARNULFO MUNGUIA", door: "DOCK53" },
-  { taskId: "TASK-5338695", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (61d 14h 50m) \u26a0 STALE", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
-  { taskId: "TASK-5382462", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (6d 21h 57m)", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
-  { taskId: "TASK-5387292", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (1d 21h 7m)", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
+  { taskId: "TASK-5382457", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (7d 16h 49m)", assignee: "ARNULFO MUNGUIA", door: "DOCK53" },
+  { taskId: "TASK-5389422", dns: "LOAD NEW", customer: "GURUNANDA, LLC", pieces: "NEW \u2014 not started", assignee: "DANIEL BELTRAN", door: "DOCK53" },
+  { taskId: "TASK-5338695", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (61d 16h 8m) \u26a0 STALE", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
+  { taskId: "TASK-5382462", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (6d 23h 14m)", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
+  { taskId: "TASK-5387292", dns: "LOAD IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (1d 22h 24m)", assignee: "ARNULFO MUNGUIA", door: "DOCK54" },
   { taskId: "TASK-5389143", dns: "RECEIVE NEW", customer: "ORG-40858", pieces: "NEW \u2014 not started", assignee: "JULIO CESAR ALVARADO", door: "DOCK56" },
-  { taskId: "TASK-5388864", dns: "RECEIVE IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (17h 55m)", assignee: "Jorge Antonio Franco", door: "DOCK68" },
+  { taskId: "TASK-5388864", dns: "RECEIVE IN_PROGRESS", customer: "GURUNANDA, LLC", pieces: "IN_PROGRESS (19h 12m)", assignee: "Jorge Antonio Franco", door: "DOCK68" },
   { taskId: "TASK-5381972", dns: "RECEIVE NEW", customer: "GURUNANDA, LLC", pieces: "NEW \u2014 not started", assignee: "Jorge Antonio Franco", door: "DOCK69" },
 ];
