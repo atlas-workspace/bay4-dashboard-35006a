@@ -1,12 +1,12 @@
 {
-  "pulledAtPT": "2026-10-10 08:01 PT",
-  "pulledAtUTC": "2026-10-10 15:01 UTC",
-  "snapshotUTC": "2026-10-10T15:01:55Z",
+  "pulledAtPT": "2026-10-10 15:18 PT",
+  "pulledAtUTC": "2026-10-10 22:18 UTC",
+  "snapshotUTC": "2026-10-10T22:18:25Z",
   "localDay": "2026-10-10",
   "facility": "Valley View (LT_F1)",
   "tenant": "LT",
   "scope": "Bay 4 DOCK50-DOCK72",
-  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-10 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-10T15:01:55Z snapshot instant.",
+  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-10 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-10T22:18:25Z snapshot instant.",
   "doorIdMap": {
     "DOCK50": "570",
     "DOCK51": "554",
@@ -158,7 +158,7 @@
         "TASK-5389467",
         "TASK-5390717"
       ],
-      "duration": "353d 18h 40m",
+      "duration": "354d 1h 57m",
       "anomaly": true,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -171,7 +171,7 @@
           "customerId": "ORG-655875",
           "start": "2025-10-21T20:21:14",
           "end": "2025-10-22T17:42:01",
-          "duration": "353d 18h 40m"
+          "duration": "354d 1h 57m"
         },
         {
           "id": "TASK-5389467",
@@ -182,7 +182,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-08T16:07:46",
           "end": null,
-          "duration": "1d 22h 54m"
+          "duration": "2d 6h 10m"
         },
         {
           "id": "TASK-5390717",
@@ -193,7 +193,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T18:37:53",
           "end": null,
-          "duration": "20h 24m"
+          "duration": "1d 3h 40m"
         }
       ]
     },
@@ -212,7 +212,7 @@
         "TASK-5381268",
         "TASK-5389973"
       ],
-      "duration": "10d 16h 35m",
+      "duration": "10d 23h 52m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -225,7 +225,7 @@
           "customerId": "ORG-655875",
           "start": "2026-09-29T22:26:17",
           "end": null,
-          "duration": "10d 16h 35m"
+          "duration": "10d 23h 52m"
         },
         {
           "id": "TASK-5389973",
@@ -236,7 +236,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-08T21:50:17",
           "end": null,
-          "duration": "1d 17h 11m"
+          "duration": "2d 0h 28m"
         }
       ]
     },
@@ -256,7 +256,7 @@
         "TASK-5389140",
         "TASK-5390984"
       ],
-      "duration": "17h 38m",
+      "duration": "1d 0h 54m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -269,7 +269,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T21:23:49",
           "end": null,
-          "duration": "17h 38m"
+          "duration": "1d 0h 54m"
         },
         {
           "id": "TASK-5389140",
@@ -301,7 +301,7 @@
         "TASK-5389637",
         "TASK-5390119"
       ],
-      "duration": "1d 23h 24m",
+      "duration": "2d 6h 40m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -314,7 +314,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-08T15:37:44",
           "end": null,
-          "duration": "1d 23h 24m"
+          "duration": "2d 6h 40m"
         },
         {
           "id": "TASK-5389637",
@@ -325,7 +325,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-08T17:54:16",
           "end": null,
-          "duration": "1d 21h 7m"
+          "duration": "2d 4h 24m"
         },
         {
           "id": "TASK-5390119",
@@ -336,7 +336,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T03:15:56",
           "end": null,
-          "duration": "1d 11h 45m"
+          "duration": "1d 19h 2m"
         }
       ]
     },
@@ -353,7 +353,7 @@
       "taskIds": [
         "TASK-5338695"
       ],
-      "duration": "63d 15h 32m",
+      "duration": "63d 22h 48m",
       "anomaly": true,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -366,7 +366,7 @@
           "customerId": "ORG-655875",
           "start": "2026-08-07T23:29:29",
           "end": "2026-08-10T16:27:26",
-          "duration": "63d 15h 32m"
+          "duration": "63d 22h 48m"
         }
       ]
     },
@@ -395,7 +395,7 @@
       "taskIds": [
         "TASK-5390124"
       ],
-      "duration": "1d 11h 54m",
+      "duration": "1d 19h 10m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -408,7 +408,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T03:07:52",
           "end": null,
-          "duration": "1d 11h 54m"
+          "duration": "1d 19h 10m"
         }
       ]
     },
@@ -425,7 +425,7 @@
       "taskIds": [
         "TASK-5390129"
       ],
-      "duration": "1d 11h 39m",
+      "duration": "1d 18h 56m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -438,7 +438,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T03:21:57",
           "end": null,
-          "duration": "1d 11h 39m"
+          "duration": "1d 18h 56m"
         }
       ]
     },
@@ -455,7 +455,7 @@
       "taskIds": [
         "TASK-5390995"
       ],
-      "duration": "16h 58m",
+      "duration": "1d 0h 15m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
@@ -468,7 +468,7 @@
           "customerId": "ORG-655875",
           "start": "2026-10-09T22:03:00",
           "end": null,
-          "duration": "16h 58m"
+          "duration": "1d 0h 15m"
         }
       ]
     },
