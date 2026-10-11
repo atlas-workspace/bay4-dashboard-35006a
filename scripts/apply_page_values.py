@@ -1,128 +1,155 @@
 #!/usr/bin/env python3
-"""Apply the fresh WISE snapshot values (wise_snapshot.json, pulled 2026-10-10T15:01:55Z / Oct 10 08:01 PT)
-to the dated/numeric literals in src/app/page.tsx.
+"""Apply the fresh WISE snapshot values (wise_snapshot.json) to the dated/numeric
+literals in src/app/page.tsx.
 
 Layout is untouched — only values that the dashboard renders are updated.
 Every replacement must match exactly once, otherwise the script fails loudly.
 All values below are read from the live snapshot; none are estimated.
 """
+import json
+import math
 import sys
+from datetime import datetime, timezone, timedelta
+
+
+def r1(x):
+    """One-decimal percentage using round-half-up (matches the dashboard's convention)."""
+    return f"{math.floor(x * 10 + 0.5) / 10:.1f}"
+
+S = json.load(open("wise_snapshot.json"))
+_kpi = S["kpi"]
+_sch = S["schedule"]
+_arn = S["arnulfo"]
+_aa = S["assignedActivity"]
+_doors = S["doors"]
+_mix = S["mix"]
+_cmix = S["customerMix"]
+_smix = S["statusMix"]
+
+# ---- timestamps ----------------------------------------------------------
+_snap = datetime.strptime(S["snapshotUtc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+_la = _snap.astimezone(timezone(timedelta(hours=-7)))                 # PDT
+STAMP_TIME = f"{_la.strftime('%H:%M')} PT"                                          # "08:16 PT"
+STAMP_SHORT = f"{_la.strftime('%b')} {_la.day} {STAMP_TIME}"                        # "Oct 11 08:16 PT"
+DATE_LONG = f"{_la.strftime('%B')} {_la.day}, {_la.strftime('%Y')}"               # "October 11, 2026"
+_boot = datetime.strptime(S["bootDay"], "%Y-%m-%d")
+BOOT_LONG = f"{_boot.strftime('%B')} {_boot.day}, {_boot.strftime('%Y')}"         # "October 11, 2026"
+
+# ---- derived values ------------------------------------------------------
+occupied = [d["door"] for d in _doors if d["status"] == "Occupied"]
+reserved = [d["door"] for d in _doors if d["status"] == "Reserved"]
+n_occ, n_res, n_avail = _kpi["occupied"], _kpi["reserved"], _kpi["available"]
+anoms = [(d["door"], d["duration"]) for d in _doors if d["anomaly"]]
+with_tasks = _kpi["withTasks"]
+n_total = _kpi["total"]
+n_new = next((m["count"] for m in _smix if m["name"] == "NEW"), 0)
+n_inprog = next((m["count"] for m in _smix if m["name"] == "IN_PROGRESS"), 0)
+mix_total = _mix["total"]
+outb, inb = _mix["outbound"], _mix["inbound"]
+pct_out = (outb / mix_total * 100) if mix_total else 0.0
+pct_in = (inb / mix_total * 100) if mix_total else 0.0
+cust_rows = [(c["name"], c["count"], r1(c["count"] / mix_total * 100)) for c in _cmix]
+sched_in = _sch["inboundOrders"]
+recv_in = _sch["inboundReceived"]
+sched_out = _sch["outboundOrders"]
+loaded_out = _sch["outboundLoaded"]
+native = {}
+for d in _doors:
+    native[d["nativeDockStatus"]] = native.get(d["nativeDockStatus"], 0) + 1
+gt = _aa["facilityGeneralTaskTotal"]
+gt_mix = _aa["statusMix"]
 
 P = "src/app/page.tsx"
 s = open(P, encoding="utf-8").read()
 
 reps = [
-    # header / stamp
-    ("DOCK50-DOCK72 &nbsp;|&nbsp; October 9, 2026 &nbsp;|&nbsp; Last refreshed: Oct 9 13:26 PT",
-     "DOCK50-DOCK72 &nbsp;|&nbsp; October 10, 2026 &nbsp;|&nbsp; Last refreshed: Oct 10 08:01 PT"),
+    ("DOCK50-DOCK72 &nbsp;|&nbsp; October 10, 2026 &nbsp;|&nbsp; Last refreshed: Oct 10 15:18 PT",
+     f"DOCK50-DOCK72 &nbsp;|&nbsp; {DATE_LONG} &nbsp;|&nbsp; Last refreshed: {STAMP_SHORT}"),
 
-    # All-time sweep stamp
-    ("All-Time Assignments (DOCK50\u2013DOCK72) \u2014 live WISE sweep, Oct 9 13:26 PT",
-     "All-Time Assignments (DOCK50\u2013DOCK72) \u2014 live WISE sweep, Oct 10 08:01 PT"),
+    ("All-Time Assignments (DOCK50\u2013DOCK72) \u2014 live WISE sweep, Oct 10 15:18 PT",
+     f"All-Time Assignments (DOCK50\u2013DOCK72) \u2014 live WISE sweep, {STAMP_SHORT}"),
 
-    # Assigned Activity banner — closest real match (Arnulfo: 6 active = 6 LOAD / 0 RECEIVE, all GURUNANDA)
-    ("assigned activity: 7 active tasks\n                (6 LOAD / 1 RECEIVE) across GURUNANDA and KARAKA.",
-     "assigned activity: 6 active tasks\n                (6 LOAD / 0 RECEIVE) across GURUNANDA."),
+    # Assigned Activity banner — general-task sweep + closest real match
+    ("Facility sweep of all 120 general tasks found 0 exact phrase matches (CLOSED 89 / NEEDS_APPROVAL 19 /\n"
+     "                NEW 10 / IN_PROGRESS 2), so every task note, job description, and task-line field was scanned.\n"
+     "                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: 6 active tasks\n"
+     "                (6 LOAD / 0 RECEIVE) across GURUNANDA.",
+     f"Facility sweep of all {gt} general tasks found {len(_aa['exactPhraseHits'])} exact phrase matches "
+     f"(CLOSED {gt_mix.get('CLOSED', 0)} / NEEDS_APPROVAL {gt_mix.get('NEEDS_APPROVAL', 0)} /\n"
+     f"                NEW {gt_mix.get('NEW', 0)} / IN_PROGRESS {gt_mix.get('IN_PROGRESS', 0)}), so every task note, "
+     "job description, and task-line field was scanned.\n"
+     f"                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: "
+     f"{_arn['count']} active tasks\n"
+     f"                ({_arn['load']} LOAD / {_arn['receive']} RECEIVE) across GURUNANDA."),
 
     # Arnulfo Active Bay 4 header
-    ("Arnulfo Active Bay 4 Tasks (7)", "Arnulfo Active Bay 4 Tasks (6)"),
-
-    # Arnulfo task list — TASK-5389973 now belongs to DANIEL BELTRAN
-    ("<strong>DOCK51:</strong> TASK-5381268 (LOAD IN_PROGRESS), TASK-5389973 (LOAD IN_PROGRESS)",
-     "<strong>DOCK51:</strong> TASK-5381268 (LOAD IN_PROGRESS)"),
-
-    # Arnulfo no longer holds DOCK56; he now holds DOCK58
-    ("<strong>DOCK56:</strong> TASK-5389635 (RECEIVE IN_PROGRESS)",
-     "<strong>DOCK58:</strong> TASK-5390995 (LOAD IN_PROGRESS)"),
+    ("Arnulfo Active Bay 4 Tasks (6)", f"Arnulfo Active Bay 4 Tasks ({_arn['count']})"),
 
     # Arnulfo total
-    ("Total: 7 open tasks (6 LOAD / 1 RECEIVE). Arnulfo also has 2 facility",
-     "Total: 6 open tasks (6 LOAD / 0 RECEIVE). Arnulfo also has 2 facility"),
-
-    # Bay 4 active assignee breakdown (ARNULFO 7 -> 6; DANIEL BELTRAN back at 2; JULIO 2 -> 1)
-    ('                <span className="text-xs text-[#a1a1aa] mt-1">\n'
-     '                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 7 active\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">EDUARDO MEJIA:</span> 2 active\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">JULIO CESAR Alvarado:</span> 2 active\n'
-     '                </span>\n',
-     '                <span className="text-xs text-[#a1a1aa] mt-1">\n'
-     '                  <span className="text-[#7c3aed] font-semibold">ARNULFO MUNGUIA:</span> 6 active\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">DANIEL BELTRAN:</span> 2 active\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">EDUARDO MEJIA:</span> 2 active\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">JULIO CESAR Alvarado:</span> 1 active\n'
-     '                </span>\n'),
-
-    # Customer mix & status (GURUNANDA 13 -> 15; ORG-40858 2 -> 1; KARAKA now 0 active -> row dropped)
-    ('                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 13 tasks (81.3% of active)\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">ORG-40858:</span> 2 tasks (12.5% of active)\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#f59e0b] font-semibold">KARAKA, LLC (ORG-585450):</span> 1 task (6.3% of active)\n'
-     '                </span>\n',
-     '                  <span className="text-[#7c3aed] font-semibold">GURUNANDA, LLC (ORG-655875):</span> 15 tasks (93.8% of active)\n'
-     '                </span>\n'
-     '                <span className="text-xs text-[#a1a1aa]">\n'
-     '                  <span className="text-[#22c55e] font-semibold">ORG-40858:</span> 1 task (6.3% of active)\n'
-     '                </span>\n'),
+    ("Total: 6 open tasks (6 LOAD / 0 RECEIVE). Arnulfo also has 2 facility",
+     f"Total: {_arn['count']} open tasks ({_arn['load']} LOAD / {_arn['receive']} RECEIVE). Arnulfo also has "
+     f"{len(_aa['arnulfoGeneralTasks'])} facility"),
 
     # task status split
-    ("12 IN_PROGRESS (75.0%) / 4 NEW (25.0%)", "13 IN_PROGRESS (81.3%) / 3 NEW (18.8%)"),
+    ("13 IN_PROGRESS (81.3%) / 3 NEW (18.8%)",
+     f"{n_inprog} IN_PROGRESS ({r1(n_inprog / mix_total * 100)}%) / {n_new} NEW ({r1(n_new / mix_total * 100)}%)"),
 
     # data notes — door utilization
-    ("6 Occupied / 3 Reserved / 14 Available</strong> - occupied: DOCK50, DOCK51, DOCK53, DOCK54, DOCK56, DOCK57; reserved (NEW task only): DOCK52, DOCK66, DOCK69. 14 doors have no active task.",
-     "8 Occupied / 2 Reserved / 13 Available</strong> - occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK56, DOCK57, DOCK58; reserved (NEW task only): DOCK66, DOCK69. 13 doors have no active task."),
+    ("8 Occupied / 2 Reserved / 13 Available</strong> - occupied: DOCK50, DOCK51, DOCK52, DOCK53, DOCK54, DOCK56, DOCK57, DOCK58; reserved (NEW task only): DOCK66, DOCK69. 13 doors have no active task.",
+     f"{n_occ} Occupied / {n_res} Reserved / {n_avail} Available</strong> - occupied: {', '.join(occupied)}; "
+     f"reserved (NEW task only): {', '.join(reserved)}. {n_avail} doors have no active task."),
 
     # data notes — mix
-    ("9 outbound (LOAD)</strong> / <strong className=\"text-[#22c55e]\">7 inbound (RECEIVE)</strong> = 16 total. 56.3% outbound / 43.8% inbound.",
-     "11 outbound (LOAD)</strong> / <strong className=\"text-[#22c55e]\">5 inbound (RECEIVE)</strong> = 16 total. 68.8% outbound / 31.3% inbound."),
+    ("11 outbound (LOAD)</strong> / <strong className=\"text-[#22c55e]\">5 inbound (RECEIVE)</strong> = 16 total. 68.8% outbound / 31.3% inbound.",
+     f"{outb} outbound (LOAD)</strong> / <strong className=\"text-[#22c55e]\">{inb} inbound (RECEIVE)</strong> = "
+     f"{mix_total} total. {r1(pct_out)}% outbound / {r1(pct_in)}% inbound."),
 
     # data notes — occupancy
-    ("9 doors with at least one active task. 39.1% task-based occupancy (9/23).",
-     "10 doors with at least one active task. 43.5% task-based occupancy (10/23)."),
+    ("10 doors with at least one active task. 43.5% task-based occupancy (10/23).",
+     f"{with_tasks} doors with at least one active task. {with_tasks / n_total * 100:.1f}% task-based occupancy ({with_tasks}/{n_total})."),
 
     # data notes — scheduled inbounds
-    ("33 receipts with an appointmentTime on the October 9 facility-local (PT) day; 6 received (18.2%).",
-     "2 receipts with an appointmentTime on the October 10 facility-local (PT) day; 0 received (0.0%)."),
+    ("2 receipts with an appointmentTime on the October 10 facility-local (PT) day; 0 received (0.0%).",
+     (f"{sched_in} receipts with an appointmentTime on the {BOOT_LONG} facility-local (PT) day; "
+      f"{recv_in} received.") if sched_in else
+     (f"No receipts with an appointmentTime on the {BOOT_LONG} facility-local (PT) day; no inbound "
+      f"receipt rate available ({sched_in} scheduled / {recv_in} received).")),
 
     # data notes — aged anomalies
-    ("DOCK50 has been held 353d 0h 4m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 62d 20h 56m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).",
-     "DOCK50 has been held 353d 18h 40m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 63d 15h 32m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10)."),
+    ("DOCK50 has been held 354d 1h 57m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 63d 22h 48m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).",
+     "DOCK50 has been held %s by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). "
+     "DOCK54 has been held %s by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10)."
+     % (anoms[0][1], anoms[1][1])),
 
-    # data notes — scheduled outbounds (day bucket is genuinely empty at pull time: 0/0 -> no rate)
-    ("113 loads with an appointmentTime on the October 9 facility-local (PT) day; 50 loaded (44.2%).",
-     "0 loads with an appointmentTime on the October 10 facility-local (PT) day yet; no outbound load rate available (0 scheduled / 0 loaded)."),
+    # data notes — scheduled outbounds
+    ("0 loads with an appointmentTime on the October 10 facility-local (PT) day yet; no outbound load rate available (0 scheduled / 0 loaded).",
+     (f"{sched_out} loads with an appointmentTime on the {BOOT_LONG} facility-local (PT) day; "
+      f"{loaded_out} loaded ({loaded_out / sched_out * 100:.1f}%).") if sched_out else
+     (f"No loads with an appointmentTime on the {BOOT_LONG} facility-local (PT) day yet; no outbound "
+      f"load rate available ({sched_out} scheduled / {loaded_out} loaded).")),
 
     # data notes — customer mix
-    ("GURUNANDA, LLC has 13 of 16 active tasks (81.3%); ORG-40858 has 2 (12.5%); KARAKA, LLC has 1 (6.3%).",
-     "GURUNANDA, LLC has 15 of 16 active tasks (93.8%); ORG-40858 has 1 (6.3%)"),
+    ("GURUNANDA, LLC has 15 of 16 active tasks (93.8%); ORG-40858 has 1 (6.3%)",
+     (f"{cust_rows[0][0]} has {cust_rows[0][1]} of {mix_total} active tasks ({cust_rows[0][2]}%); "
+      f"{cust_rows[1][0]} has {cust_rows[1][1]} ({cust_rows[1][2]}%)") if len(cust_rows) > 1 else
+     (f"{cust_rows[0][0]} has all {mix_total} active tasks")),
 
     # data notes — native dock status
-    ("native dockStatus OCCUPIED = 13; RESERVED = 1; AVAILABLE = 9",
-     "native dockStatus OCCUPIED = 16; RESERVED = 1; AVAILABLE = 6"),
+    ("native dockStatus OCCUPIED = 16; RESERVED = 1; AVAILABLE = 6",
+     "native dockStatus OCCUPIED = %d; RESERVED = %d; AVAILABLE = %d"
+     % (native.get("OCCUPIED", 0), native.get("RESERVED", 0), native.get("AVAILABLE", 0))),
 
     # data notes / footer — refresh instant
-    ("All core metrics sourced from live WISE/WMS queries, October 9, 2026 13:26 PT.",
-     "All core metrics sourced from live WISE/WMS queries, October 10, 2026 08:01 PT."),
-    ("Last refreshed: October 9, 2026 13:26 PT", "Last refreshed: October 10, 2026 08:01 PT"),
+    ("All core metrics sourced from live WISE/WMS queries, October 10, 2026 15:18 PT.",
+     f"All core metrics sourced from live WISE/WMS queries, {DATE_LONG} {STAMP_TIME}."),
+    ("Last refreshed: October 10, 2026 15:18 PT", f"Last refreshed: {DATE_LONG} {STAMP_TIME}"),
 ]
 
 fail = False
 for old, new in reps:
     n = s.count(old)
     if n != 1:
-        print(f"ERROR: expected 1 occurrence, found {n} for: {old[:80]!r}")
+        print(f"ERROR: expected 1 occurrence, found {n} for: {old[:90]!r}")
         fail = True
         continue
     s = s.replace(old, new)
@@ -135,9 +162,9 @@ open(P, "w", encoding="utf-8").write(s)
 print(f"page.tsx updated with {len(reps)} value changes")
 
 # sanity: no stale tokens remain
-stale = ["Oct 9 13:26", "October 9, 2026", "353d 0h 4m", "62d 20h 56m", "113 loads", "44.2%",
-         "81.3%", "56.3%", "43.5%", "39.1%", "KARAKA", "TASK-5389635", "TASK-5389973",
-         "18.2%", "(7)", "7 active", "October 9 facility-local"]
+stale = ["Oct 10 15:18", "October 10, 2026", "354d 1h 57m", "63d 22h 48m",
+         "2 receipts with an appointmentTime", "October 10 facility-local",
+         "93.8%", "68.8%", "43.5%", "2 facility\n                general tasks"]
 for bad in stale:
     if bad in s:
         print("WARN stale token still present:", bad)
