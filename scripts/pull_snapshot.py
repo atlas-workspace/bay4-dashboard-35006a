@@ -156,6 +156,7 @@ for name in [f"DOCK{n}" for n in range(50, 73)]:
                   "duration": dur_s, "anomaly": bool(anomaly), "nativeDockStatus": native,
                   "tasks": [{"id": r.get("id"), "type": r["_kind"], "status": r.get("status"),
                              "assignee": r.get("assigneeUserName"),
+                             "assigneeUserId": (str(r.get("assigneeUserId")) if r.get("assigneeUserId") is not None else None),
                              "customer": CUST.get(r.get("customerId"), r.get("customerId")),
                              "customerId": r.get("customerId"),
                              "start": r.get("startTime"), "end": r.get("endTime"),

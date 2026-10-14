@@ -121,6 +121,62 @@ NAT_BULLET = ('<li>Door status is task-derived. The WMS native <em>dockStatus</e
               f'(native dockStatus OCCUPIED = {nat.get("OCCUPIED", 0)}; RESERVED = {nat.get("RESERVED", 0)}; '
               f'AVAILABLE = {nat.get("AVAILABLE", 0)} - while the grid keeps the same task-derived convention as the tracked activity).</li>')
 
+# ---- Arnulfo Bay-4 assigned activity (live, resolved by assignee user id) --
+ARNULLFO_UID = "89"
+CUST_SHORT = {"ORG-655875": "GURUNANDA", "ORG-585450": "KARAKA"}
+arn = []
+for d in _doors:
+    for t in d["tasks"]:
+        if str(t.get("assigneeUserId")) == ARNULLFO_UID:
+            arn.append((int(d["door"].replace("DOCK", "")), t["id"], d["door"], t))
+arn.sort(key=lambda x: (x[0], x[1]))
+n_arn = len(arn)
+n_arn_load = sum(1 for _, _, _, t in arn if t["type"] == "LOAD")
+n_arn_recv = sum(1 for _, _, _, t in arn if t["type"] == "RECEIVE")
+_arn_cust_n = {}
+for _, _, _, t in arn:
+    nm = CUST_SHORT.get(t.get("customerId"), t.get("customer"))
+    if nm:
+        _arn_cust_n[nm] = _arn_cust_n.get(nm, 0) + 1
+ARN_CUSTS = " and ".join(k for k, _ in sorted(_arn_cust_n.items(), key=lambda kv: (-kv[1], kv[0])))
+
+_g = S["assignedActivity"]["arnulfoGeneralTasks"]
+_gstat = sorted({x["status"] for x in _g})
+if len(_g) == 2 and len(_gstat) == 1:
+    ARN_FOOT_TXT = f"Arnulfo also has 2 facility general tasks, both {_gstat[0]}"
+else:
+    ARN_FOOT_TXT = f"Arnulfo also has {len(_g)} facility general tasks ({', '.join(_gstat)})"
+
+_gt = S["assignedActivity"]["facilityGeneralTaskTotal"]
+_gsm = S["assignedActivity"]["statusMix"]
+_nh = len(S["assignedActivity"]["exactPhraseHits"])
+
+
+def arn_row(i, door, t):
+    cls = "text-xs text-[#a1a1aa] mt-1" if i == 0 else "text-xs text-[#a1a1aa]"
+    detail = f'{t["type"]} {t["status"]}'
+    if t.get("end") and t["status"] != "NEW":
+        detail += f', endTime {t["end"][:10]} but unclosed \u26a0 STALE'
+    return (f'                <span className="{cls}">\n'
+            f'                  <strong>{door}:</strong> {t["id"]} ({detail})\n'
+            f'                </span>')
+
+
+ARN_BODY = "\n".join(arn_row(i, door, t) for i, (_, _, door, t) in enumerate(arn)) + "\n" + (
+    '                <span className="text-xs text-[#71717a] mt-1 italic">\n'
+    f'                  Total: {n_arn} open tasks ({n_arn_load} LOAD / {n_arn_recv} RECEIVE). {ARN_FOOT_TXT};\n'
+    '                  neither carries the queried description.\n'
+    '                </span>')
+
+BANNER_BLOCK = (
+    '<span className="text-xs text-[#a1a1aa] block mt-0.5">\n'
+    f'                Facility sweep of all {_gt} general tasks found {_nh} exact phrase matches '
+    f'(CLOSED {_gsm.get("CLOSED", 0)} / NEEDS_APPROVAL {_gsm.get("NEEDS_APPROVAL", 0)} /\n'
+    f'                NEW {_gsm.get("NEW", 0)} / IN_PROGRESS {_gsm.get("IN_PROGRESS", 0)}), so every task note, job description, and task-line field was scanned.\n'
+    f'                Closest real match - ARNULFO MUNGUIA&apos;s Bay 4 DOCK50-DOCK72 assigned activity: {n_arn} active tasks\n'
+    f'                ({n_arn_load} LOAD / {n_arn_recv} RECEIVE) across {ARN_CUSTS}.\n'
+    '              </span>')
+
 # ---- run -----------------------------------------------------------------
 P = "src/app/page.tsx"
 s = open(P, encoding="utf-8").read()
@@ -147,6 +203,10 @@ sub_once(r"(Bay 4 Active Assignee Breakdown\s*</span>\n)(.*?)(\n              </
          lambda m: m.group(1) + ASG_BLOCK + m.group(3), "assignee breakdown block")
 sub_once(r"(Bay 4 Customer Mix &amp; Status\s*</span>\n)(.*?)(\n              </div>)",
          lambda m: m.group(1) + CUST_BLOCK + m.group(3), "customer mix block")
+sub_once(r'<span className="text-xs text-\[#a1a1aa\] block mt-0\.5">\s*Facility sweep of all.*?</span>',
+         lambda m: BANNER_BLOCK, "assigned-activity banner")
+sub_once(r'(<span className="text-\[10px\] text-\[#71717a\] uppercase tracking-wider">\n\s*Arnulfo Active Bay 4 Tasks \()\d+(\)\s*</span>\n)(.*?)(\n              </div>)',
+         lambda m: m.group(1) + str(n_arn) + m.group(2) + ARN_BODY + m.group(4), "Arnulfo column")
 sub_once(r'<li><strong className="text-\[#f4f4f6\]">.*?</li>', lambda m: OCC_BULLET, "occupancy bullet")
 sub_once(r'<li>Active tasks: .*?</li>', lambda m: MIX_BULLET, "mix bullet")
 sub_once(r'<li>\d+ doors with at least one active task\..*?</li>', lambda m: DOOR_BULLET, "doors-with-task bullet")
