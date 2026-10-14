@@ -18,60 +18,155 @@ _doors = S["doors"]
 # ---- timestamps ----------------------------------------------------------
 _snap = datetime.strptime(S["snapshotUtc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
 _la = _snap.astimezone(timezone(timedelta(hours=-7)))            # PDT
-STAMP_TIME = f"{_la.strftime('%H:%M')} PT"                       # "11:07 PT"
-STAMP_SHORT = f"{_la.strftime('%b')} {_la.day} {STAMP_TIME}"     # "Oct 11 11:07 PT"
-DATE_LONG = f"{_la.strftime('%B')} {_la.day}, {_la.strftime('%Y')}"  # "October 11, 2026"
+STAMP_TIME = f"{_la.strftime('%H:%M')} PT"                       # "11:37 PT"
+STAMP_SHORT = f"{_la.strftime('%b')} {_la.day} {STAMP_TIME}"     # "Oct 14 11:37 PT"
+DATE_LONG = f"{_la.strftime('%B')} {_la.day}, {_la.strftime('%Y')}"  # "October 14, 2026"
+BOOT = S["bootDay"]
+_boot = datetime.strptime(BOOT, "%Y-%m-%d")
+BOOT_LONG = f"{_boot.strftime('%B')} {_boot.day}, {_boot.strftime('%Y')}"
 
 # ---- aged-anomaly durations (per door, from the live snapshot) -----------
 anom_dur = {d["door"]: d["duration"] for d in _doors if d["anomaly"]}
 DUR_RE = r"(?:\d+d )?\d+h \d+m"
 
+# ---- derived business values (all from the live snapshot) ----------------
+doors = S["doors"]
+occ = [d["door"] for d in doors if d["status"] == "Occupied"]
+res = [d["door"] for d in doors if d["status"] == "Reserved"]
+avail = [d["door"] for d in doors if d["status"] == "Available"]
+n_occ, n_res, n_avail, n_total = len(occ), len(res), len(avail), len(doors)
+n_with = sum(1 for d in doors if d["taskIds"])
+
+mix = S["mix"]
+m_out, m_in, m_tot = mix["outbound"], mix["inbound"], mix["total"]
+
+
+def pct(n, d):
+    return round(n / d * 100, 1) if d else 0.0
+
+
+asg = S["assigneeSummaries"]                    # already sorted by (-count, name)
+custmix = S["customerMix"]
+smix = {x["name"]: x["count"] for x in S["statusMix"]}
+sch = S["schedule"]
+n_recv = len(sch["receiptRows"])
+recv = sch["inboundReceived"]
+n_out = sch["outboundOrders"]
+loaded = sch["outboundLoaded"]
+nat = {}
+for d in doors:
+    nat[d["nativeDockStatus"]] = nat.get(d["nativeDockStatus"], 0) + 1
+
+# customer display name -> org id (from the same scoped task rows)
+cust_id = {}
+for d in doors:
+    for t in d["tasks"]:
+        if t.get("customer") and t.get("customerId"):
+            cust_id[t["customer"]] = t["customerId"]
+
+# ---- replacement blocks --------------------------------------------------
+def asg_color(i):
+    return "#7c3aed" if i == 0 else ("#22c55e" if i < 3 else "#f59e0b")
+
+
+def asg_row(i, a):
+    cls = "text-xs text-[#a1a1aa] mt-1" if i == 0 else "text-xs text-[#a1a1aa]"
+    return (f'                <span className="{cls}">\n'
+            f'                  <span className="text-[{asg_color(i)}] font-semibold">{a["name"]}:</span> {a["taskCount"]} active\n'
+            f'                </span>')
+
+
+ASG_BLOCK = "\n".join(asg_row(i, a) for i, a in enumerate(asg))
+
+
+def cust_row(i, c):
+    cls = "text-xs text-[#a1a1aa] mt-1" if i == 0 else "text-xs text-[#a1a1aa]"
+    color = "#7c3aed" if i == 0 else "#22c55e"
+    label = f'{c["name"]} ({cust_id[c["name"]]})' if c["name"] in cust_id else c["name"]
+    return (f'                <span className="{cls}">\n'
+            f'                  <span className="text-[{color}] font-semibold">{label}:</span> {c["count"]} tasks ({pct(c["count"], m_tot)}% of active)\n'
+            f'                </span>')
+
+
+CUST_BLOCK = ("\n".join(cust_row(i, c) for i, c in enumerate(custmix))
+              + '\n                <div className="mt-2 pt-2 border-t border-[#1e1e2a]">\n'
+              + '                  <span className="text-[10px] text-[#71717a] uppercase tracking-wider">Task Status</span>\n'
+              + '                  <span className="text-xs text-[#a1a1aa] block mt-0.5">\n'
+              + f'                    {smix.get("IN_PROGRESS", 0)} IN_PROGRESS ({pct(smix.get("IN_PROGRESS", 0), m_tot)}%) / {smix.get("NEW", 0)} NEW ({pct(smix.get("NEW", 0), m_tot)}%)\n'
+              + '                  </span>\n'
+              + '                </div>')
+
+OCC_BULLET = (f'<li><strong className="text-[#f4f4f6]">{n_occ} Occupied / {n_res} Reserved / {n_avail} Available</strong>'
+              f' - occupied: {", ".join(occ)}; reserved (NEW task only): {", ".join(res) if res else "none"}.'
+              f' {n_avail} doors have no active task.</li>')
+
+MIX_BULLET = (f'<li>Active tasks: <strong className="text-[#7c3aed]">{m_out} outbound (LOAD)</strong> / '
+              f'<strong className="text-[#22c55e]">{m_in} inbound (RECEIVE)</strong> = {m_tot} total. '
+              f'{pct(m_out, m_tot)}% outbound / {pct(m_in, m_tot)}% inbound.</li>')
+
+DOOR_BULLET = (f'<li>{n_with} doors with at least one active task. '
+               f'{pct(n_with, n_total)}% task-based occupancy ({n_with}/{n_total}).</li>')
+
+INB_BULLET = (f'<li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> {n_recv} receipts with an '
+              f'appointmentTime on the {BOOT_LONG} facility-local (PT) day; {recv} received ({pct(recv, n_recv)}%).</li>')
+
+OUT_BULLET = (f'<li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> {n_out} loads with an '
+              f'appointmentTime in the {BOOT_LONG} facility-local (PT) day bucket; {loaded} loaded ({pct(loaded, n_out)}%).</li>')
+
+CM_BULLET = ('<li><strong className="text-[#7c3aed]">★ Customer mix:</strong> '
+             + '; '.join(f'{c["name"]} has {c["count"]} of {m_tot} active tasks ({pct(c["count"], m_tot)}%)' for c in custmix)
+             + '</li>')
+
+NAT_BULLET = ('<li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull '
+              f'(native dockStatus OCCUPIED = {nat.get("OCCUPIED", 0)}; RESERVED = {nat.get("RESERVED", 0)}; '
+              f'AVAILABLE = {nat.get("AVAILABLE", 0)} - while the grid keeps the same task-derived convention as the tracked activity).</li>')
+
+# ---- run -----------------------------------------------------------------
 P = "src/app/page.tsx"
 s = open(P, encoding="utf-8").read()
 
-# (pattern, replacement) — every pattern must match exactly once.
-reps = [
-    # Header line: "<doors> | <long date> | Last refreshed: <short stamp>"
-    (r"(DOCK50-DOCK72 &nbsp;\|&nbsp; )[A-Z][a-z]+ \d{1,2}, \d{4}"
-     r"( &nbsp;\|&nbsp; Last refreshed: )[A-Z][a-z]{2} \d{1,2} \d{2}:\d{2} PT",
-     lambda m: m.group(1) + DATE_LONG + m.group(2) + STAMP_SHORT),
+_fail = []
 
-    # "All-Time Assignments (DOCK50–DOCK72) — live WISE sweep, <stamp>"
-    (r"(live WISE sweep, )[A-Z][a-z]{2} \d{1,2} \d{2}:\d{2} PT",
-     lambda m: m.group(1) + STAMP_SHORT),
 
-    # Data Notes — aged anomalies (one per anomalous door)
-    (r"(DOCK50 has been held )" + DUR_RE + r"( by an ended-but-unclosed RECEIVE task)",
-     lambda m: m.group(1) + anom_dur["DOCK50"] + m.group(2)),
-    (r"(DOCK54 has been held )" + DUR_RE + r"( by an ended-but-unclosed LOAD task)",
-     lambda m: m.group(1) + anom_dur["DOCK54"] + m.group(2)),
-
-    # Data Notes — source provenance stamp
-    (r"(All core metrics sourced from live WISE/WMS queries, )[A-Z][a-z]+ \d{1,2}, \d{4} \d{2}:\d{2} PT",
-     lambda m: m.group(1) + f"{DATE_LONG} {STAMP_TIME}"),
-
-    # Footer — long-form refresh stamp
-    (r"(Last refreshed: )[A-Z][a-z]+ \d{1,2}, \d{4} \d{2}:\d{2} PT",
-     lambda m: m.group(1) + f"{DATE_LONG} {STAMP_TIME}"),
-]
-
-fail = False
-for pat, rep in reps:
-    s, n = re.subn(pat, rep, s)
+def sub_once(pattern, repl, label):
+    global s
+    s, n = re.subn(pattern, repl, s, flags=re.S)
     if n != 1:
-        print(f"ERROR: expected 1 occurrence, found {n} for pattern: {pat[:80]!r}")
-        fail = True
+        _fail.append(f"{label}: expected 1 match, found {n}")
 
-if fail:
-    print("ABORTED — no changes written")
+
+sub_once(r"(DOCK50-DOCK72 &nbsp;\|&nbsp; )[A-Z][a-z]+ \d{1,2}, \d{4}( &nbsp;\|&nbsp; Last refreshed: )[A-Z][a-z]{2} \d{1,2} \d{2}:\d{2} PT",
+         lambda m: m.group(1) + DATE_LONG + m.group(2) + STAMP_SHORT, "header stamp")
+sub_once(r"(live WISE sweep, )[A-Z][a-z]{2} \d{1,2} \d{2}:\d{2} PT",
+         lambda m: m.group(1) + STAMP_SHORT, "all-time stamp")
+sub_once(r"(DOCK50 has been held )" + DUR_RE + r"( by an ended-but-unclosed RECEIVE task)",
+         lambda m: m.group(1) + anom_dur["DOCK50"] + m.group(2), "DOCK50 anomaly duration")
+sub_once(r"(DOCK54 has been held )" + DUR_RE + r"( by an ended-but-unclosed LOAD task)",
+         lambda m: m.group(1) + anom_dur["DOCK54"] + m.group(2), "DOCK54 anomaly duration")
+sub_once(r"(Bay 4 Active Assignee Breakdown\s*</span>\n)(.*?)(\n              </div>)",
+         lambda m: m.group(1) + ASG_BLOCK + m.group(3), "assignee breakdown block")
+sub_once(r"(Bay 4 Customer Mix &amp; Status\s*</span>\n)(.*?)(\n              </div>)",
+         lambda m: m.group(1) + CUST_BLOCK + m.group(3), "customer mix block")
+sub_once(r'<li><strong className="text-\[#f4f4f6\]">.*?</li>', lambda m: OCC_BULLET, "occupancy bullet")
+sub_once(r'<li>Active tasks: .*?</li>', lambda m: MIX_BULLET, "mix bullet")
+sub_once(r'<li>\d+ doors with at least one active task\..*?</li>', lambda m: DOOR_BULLET, "doors-with-task bullet")
+sub_once(r'<li><strong className="text-\[#22c55e\]">★ Scheduled inbounds:.*?</li>', lambda m: INB_BULLET, "inbound bullet")
+sub_once(r'<li><strong className="text-\[#7c3aed\]">★ Scheduled outbounds:.*?</li>', lambda m: OUT_BULLET, "outbound bullet")
+sub_once(r'<li><strong className="text-\[#7c3aed\]">★ Customer mix:.*?</li>', lambda m: CM_BULLET, "customer-mix bullet")
+sub_once(r'<li>Door status is task-derived\..*?</li>', lambda m: NAT_BULLET, "native-dock-status bullet")
+sub_once(r"(All core metrics sourced from live WISE/WMS queries, )[A-Z][a-z]+ \d{1,2}, \d{4} \d{2}:\d{2} PT",
+         lambda m: m.group(1) + f"{DATE_LONG} {STAMP_TIME}", "source stamp")
+sub_once(r"(Last refreshed: )[A-Z][a-z]+ \d{1,2}, \d{4} \d{2}:\d{2} PT",
+         lambda m: m.group(1) + f"{DATE_LONG} {STAMP_TIME}", "footer stamp")
+
+if _fail:
+    print("ABORTED — no changes written:")
+    for f in _fail:
+        print("  -", f)
     sys.exit(1)
 
 open(P, "w", encoding="utf-8").write(s)
-print(f"page.tsx updated with {len(reps)} value changes")
-
-# sanity: no stale tokens remain
-stale = ["08:16 PT", "354d 18h 55m", "64d 15h 47m"]
-for bad in stale:
-    if bad in s:
-        print("WARN stale token still present:", bad)
-print("done")
+print("page.tsx refreshed with all snapshot values")
+print("  occupied/reserved/available:", n_occ, n_res, n_avail, "| withTask:", n_with)
+print("  mix out/in:", m_out, m_in, "| customer:", [(c["name"], c["count"]) for c in custmix], "| status:", smix)
+print("  schedule in:", recv, "/", n_recv, "  out:", loaded, "/", n_out, "| native:", nat)
