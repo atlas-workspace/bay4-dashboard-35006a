@@ -65,7 +65,7 @@ export const doors: DoorRecord[] = [
   { door: "DOCK62", status: "Occupied", assignee: "JORGE ARMANDO DUENAS", customer: "GURUNANDA, LLC", taskIds: ["TASK-5393820"], duration: "2d 20h 1m", anomaly: false },
   { door: "DOCK65", status: "Occupied", assignee: "ARNULFO MUNGUIA / Jorge Antonio Franco", customer: "GURUNANDA, LLC / KARAKA, LLC", taskIds: ["TASK-5394671", "TASK-5396301"], duration: "1d 22h 35m", anomaly: false },
 
-  // ─── AVAILABLE — no active tasks (13 doors) ───
+  // ─── RESERVED / AVAILABLE — no IN_PROGRESS task (13 doors) ───
   { door: "DOCK58", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK59", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK60", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
@@ -75,7 +75,7 @@ export const doors: DoorRecord[] = [
   { door: "DOCK66", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK67", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK68", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
-  { door: "DOCK69", status: "Reserved", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
+  { door: "DOCK69", status: "Reserved", assignee: "DANIELA GONZALEZ / Jorge Antonio Franco", customer: "GURUNANDA, LLC", taskIds: ["TASK-5381972", "TASK-5395821"], duration: null, anomaly: false },
   { door: "DOCK70", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK71", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },
   { door: "DOCK72", status: "Available", assignee: null, customer: null, taskIds: [], duration: null, anomaly: false },

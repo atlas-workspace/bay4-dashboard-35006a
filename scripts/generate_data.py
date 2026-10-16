@@ -54,11 +54,14 @@ for d in occ:
         f'customer: {json.dumps(jcustomers(d))}, taskIds: {json.dumps(sorted(d["taskIds"]))}, '
         f'duration: {json.dumps(door_duration(d))}, anomaly: {str(d["anomaly"]).lower()} }},')
 door_lines.append("")
-door_lines.append(f"  // ─── AVAILABLE — no active tasks ({len(oth)} doors) ───")
+door_lines.append(f"  // ─── RESERVED / AVAILABLE — no IN_PROGRESS task ({len(oth)} doors) ───")
+# Reserved doors still hold live NEW tasks; keep their real assignee/customer/taskIds so the
+# grid and the "Doors w/ Active Tasks" KPI match the snapshot (only taskless doors are blank).
 for d in oth:
     door_lines.append(
-        f'  {{ door: "{d["door"]}", status: "{d["status"]}", assignee: null, customer: null, '
-        f'taskIds: [], duration: null, anomaly: false }},')
+        f'  {{ door: "{d["door"]}", status: "{d["status"]}", assignee: {json.dumps(jassignees(d))}, '
+        f'customer: {json.dumps(jcustomers(d))}, taskIds: {json.dumps(sorted(d["taskIds"]))}, '
+        f'duration: {json.dumps(door_duration(d))}, anomaly: {str(d["anomaly"]).lower()} }},')
 doors_block = "\n".join(door_lines).rstrip()
 
 # ---- assignees -----------------------------------------------------------
