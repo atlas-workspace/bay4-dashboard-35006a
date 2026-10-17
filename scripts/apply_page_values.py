@@ -107,7 +107,8 @@ MIX_BULLET = (f'<li>Active tasks: <strong className="text-[#7c3aed]">{m_out} out
 DOOR_BULLET = (f'<li>{n_with} doors with at least one active task. '
                f'{pct(n_with, n_total)}% task-based occupancy ({n_with}/{n_total}).</li>')
 
-INB_BULLET = (f'<li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> {n_recv} receipts with an '
+INB_BULLET = (f'<li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> {n_recv} '
+              f'{"receipt" if n_recv == 1 else "receipts"} with an '
               f'appointmentTime on the {BOOT_LONG} facility-local (PT) day; {recv} received ({pct(recv, n_recv)}%).</li>')
 
 OUT_BULLET = (f'<li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> {n_out} loads with an '
