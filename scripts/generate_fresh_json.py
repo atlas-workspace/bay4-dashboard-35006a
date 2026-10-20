@@ -93,8 +93,8 @@ out = {
             "rows": sch["receiptRows"],
         },
         "outbound": {
-            "scheduled": len(sch["loadRowsPreview"]), "loaded": sch["outboundLoaded"],
-            "pctLoaded": None,
+            "scheduled": sched_out, "loaded": sch["outboundLoaded"],
+            "pctLoaded": pct_out,
             "definition": (f"loads with appointmentTime in the {S['bootDay']} facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."),
         },
     },
