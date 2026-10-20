@@ -49,7 +49,7 @@ export default function DashboardPage() {
               Bay 4 Assignments — Valley View
             </h1>
             <p className="text-xs text-[#71717a] tracking-wide">
-              DOCK50-DOCK72 &nbsp;|&nbsp; October 19, 2026 &nbsp;|&nbsp; Last refreshed: Oct 19 17:59 PT
+              DOCK50-DOCK72 &nbsp;|&nbsp; October 20, 2026 &nbsp;|&nbsp; Last refreshed: Oct 20 06:53 PT
             </p>
           </div>
           {/* Facility badge */}
@@ -134,7 +134,7 @@ export default function DashboardPage() {
           <div className="mt-3 bg-[#141419] border border-[#1e1e2a] rounded-xl overflow-hidden">
             <div className="px-5 py-2.5 bg-[#0a0a0f] border-b border-[#1e1e2a]">
               <span className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
-                All-Time Assignments (DOCK50–DOCK72) — live WISE sweep, Oct 19 17:59 PT
+                All-Time Assignments (DOCK50–DOCK72) — live WISE sweep, Oct 20 06:53 PT
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-5 py-3">
@@ -224,7 +224,7 @@ export default function DashboardPage() {
                   <span className="text-[#22c55e] font-semibold">Jorge Antonio Franco:</span> 4 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
-                  <span className="text-[#22c55e] font-semibold">DANIELA GONZALEZ:</span> 1 active
+                  <span className="text-[#22c55e] font-semibold">JESUS ESPINOZA:</span> 1 active
                 </span>
                 <span className="text-xs text-[#a1a1aa]">
                   <span className="text-[#f59e0b] font-semibold">daira gonzalez:</span> 1 active
@@ -260,16 +260,16 @@ export default function DashboardPage() {
               Data Notes
             </span>
             <ul className="text-xs text-[#71717a] space-y-1 list-disc list-inside">
-              <li><strong className="text-[#f4f4f6]">8 Occupied / 1 Reserved / 14 Available</strong> - occupied: DOCK50, DOCK52, DOCK53, DOCK54, DOCK60, DOCK61, DOCK62, DOCK65; reserved (NEW task only): DOCK69. 14 doors have no active task.</li>
-              <li>Active tasks: <strong className="text-[#7c3aed]">4 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">8 inbound (RECEIVE)</strong> = 12 total. 33.3% outbound / 66.7% inbound.</li>
+              <li><strong className="text-[#f4f4f6]">8 Occupied / 1 Reserved / 14 Available</strong> - occupied: DOCK50, DOCK52, DOCK53, DOCK54, DOCK57, DOCK61, DOCK62, DOCK65; reserved (NEW task only): DOCK69. 14 doors have no active task.</li>
+              <li>Active tasks: <strong className="text-[#7c3aed]">5 outbound (LOAD)</strong> / <strong className="text-[#22c55e]">7 inbound (RECEIVE)</strong> = 12 total. 41.7% outbound / 58.3% inbound.</li>
               <li>9 doors with at least one active task. 39.1% task-based occupancy (9/23).</li>
-              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 41 receipts with an appointmentTime on the October 19, 2026 facility-local (PT) day; 4 received (9.8%).</li>
-              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 363d 4h 37m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 73d 1h 29m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
-              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 137 loads with an appointmentTime in the October 19, 2026 facility-local (PT) day bucket; 89 loaded (65.0%).</li>
+              <li><strong className="text-[#22c55e]">★ Scheduled inbounds:</strong> 26 receipts with an appointmentTime on the October 20, 2026 facility-local (PT) day; 1 received (3.8%).</li>
+              <li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> DOCK50 has been held 363d 17h 31m by an ended-but-unclosed RECEIVE task (TASK-5090739, endTime 2025-10-22). DOCK54 has been held 73d 14h 23m by an ended-but-unclosed LOAD task (TASK-5338695, endTime 2026-08-10).</li>
+              <li><strong className="text-[#7c3aed]">★ Scheduled outbounds:</strong> 118 loads with an appointmentTime in the October 20, 2026 facility-local (PT) day bucket; 0 loaded (0.0%).</li>
               <li><strong className="text-[#7c3aed]">★ Customer mix:</strong> GURUNANDA, LLC has 10 of 12 active tasks (83.3%); KARAKA, LLC has 2 of 12 active tasks (16.7%)</li>
-              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 12; RESERVED = 3; AVAILABLE = 8 - while the grid keeps the same task-derived convention as the tracked activity).</li>
+              <li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull (native dockStatus OCCUPIED = 12; RESERVED = 2; AVAILABLE = 9 - while the grid keeps the same task-derived convention as the tracked activity).</li>
               <li>Assignee shown is the current WMS task assignment (assigneeUserId/assigneeUserName), not proof of who executed the work.</li>
-              <li>All core metrics sourced from live WISE/WMS queries, October 19, 2026 17:59 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
+              <li>All core metrics sourced from live WISE/WMS queries, October 20, 2026 06:53 PT. Per-task assignee mapping resolved via load-task and receive-task APIs.</li>
             </ul>
           </div>
         </section>
@@ -279,7 +279,7 @@ export default function DashboardPage() {
       <footer className="border-t border-[#1e1e2a] bg-[#0a0a0f] mt-2">
         <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-[#71717a]">
           <span>Valley View Warehouse — Bay 4 Operations</span>
-          <span>Last refreshed: October 19, 2026 17:59 PT</span>
+          <span>Last refreshed: October 20, 2026 06:53 PT</span>
         </div>
       </footer>
     </div>
