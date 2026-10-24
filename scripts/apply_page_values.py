@@ -26,8 +26,16 @@ _boot = datetime.strptime(BOOT, "%Y-%m-%d")
 BOOT_LONG = f"{_boot.strftime('%B')} {_boot.day}, {_boot.strftime('%Y')}"
 
 # ---- aged-anomaly durations (per door, from the live snapshot) -----------
-anom_dur = {d["door"]: d["duration"] for d in _doors if d["anomaly"]}
+# Every anomalous door is rendered from the live task rows (door, duration, task id,
+# task type, endTime). Nothing is carried over from a previous pull.
 DUR_RE = r"(?:\d+d )?\d+h \d+m"
+ANOM_PARTS = []
+for _d in _doors:
+    for _t in _d["tasks"]:
+        if _t.get("end"):
+            ANOM_PARTS.append(f'{_d["door"]} has been held {_d["duration"]} by an ended-but-unclosed '
+                              f'{_t["type"]} task ({_t["id"]}, endTime {_t["end"][:10]})')
+ANOM_PARTS.sort(key=lambda s: int(s.split(" has been held")[0].replace("DOCK", "")))
 
 # ---- derived business values (all from the live snapshot) ----------------
 doors = S["doors"]
@@ -83,8 +91,9 @@ def cust_row(i, c):
     cls = "text-xs text-[#a1a1aa] mt-1" if i == 0 else "text-xs text-[#a1a1aa]"
     color = "#7c3aed" if i == 0 else "#22c55e"
     label = f'{c["name"]} ({cust_id[c["name"]]})' if c["name"] in cust_id else c["name"]
+    unit = "task" if c["count"] == 1 else "tasks"
     return (f'                <span className="{cls}">\n'
-            f'                  <span className="text-[{color}] font-semibold">{label}:</span> {c["count"]} tasks ({pct(c["count"], m_tot)}% of active)\n'
+            f'                  <span className="text-[{color}] font-semibold">{label}:</span> {c["count"]} {unit} ({pct(c["count"], m_tot)}% of active)\n'
             f'                </span>')
 
 
@@ -121,6 +130,9 @@ CM_BULLET = ('<li><strong className="text-[#7c3aed]">★ Customer mix:</strong> 
 NAT_BULLET = ('<li>Door status is task-derived. The WMS native <em>dockStatus</em> field differs on this pull '
               f'(native dockStatus OCCUPIED = {nat.get("OCCUPIED", 0)}; RESERVED = {nat.get("RESERVED", 0)}; '
               f'AVAILABLE = {nat.get("AVAILABLE", 0)} - while the grid keeps the same task-derived convention as the tracked activity).</li>')
+
+ANOM_BULLET = ('<li><strong className="text-[#f59e0b]">⚠ Aged Anomalies:</strong> '
+               + ". ".join(ANOM_PARTS) + ".</li>")
 
 # ---- Arnulfo Bay-4 assigned activity (live, resolved by assignee user id) --
 ARNULLFO_UID = "89"
@@ -196,10 +208,8 @@ sub_once(r"(DOCK50-DOCK72 &nbsp;\|&nbsp; )[A-Z][a-z]+ \d{1,2}, \d{4}( &nbsp;\|&n
          lambda m: m.group(1) + DATE_LONG + m.group(2) + STAMP_SHORT, "header stamp")
 sub_once(r"(live WISE sweep, )[A-Z][a-z]{2} \d{1,2} \d{2}:\d{2} PT",
          lambda m: m.group(1) + STAMP_SHORT, "all-time stamp")
-sub_once(r"(DOCK50 has been held )" + DUR_RE + r"( by an ended-but-unclosed RECEIVE task)",
-         lambda m: m.group(1) + anom_dur["DOCK50"] + m.group(2), "DOCK50 anomaly duration")
-sub_once(r"(DOCK54 has been held )" + DUR_RE + r"( by an ended-but-unclosed LOAD task)",
-         lambda m: m.group(1) + anom_dur["DOCK54"] + m.group(2), "DOCK54 anomaly duration")
+sub_once(r'<li><strong className="text-\[#f59e0b\]">⚠ Aged Anomalies:.*?</li>',
+         lambda m: ANOM_BULLET, "aged-anomaly bullet")
 sub_once(r"(Bay 4 Active Assignee Breakdown\s*</span>\n)(.*?)(\n              </div>)",
          lambda m: m.group(1) + ASG_BLOCK + m.group(3), "assignee breakdown block")
 sub_once(r"(Bay 4 Customer Mix &amp; Status\s*</span>\n)(.*?)(\n              </div>)",

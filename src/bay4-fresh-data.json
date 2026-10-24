@@ -1,12 +1,12 @@
 {
-  "pulledAtPT": "2026-10-22 17:52 PT",
-  "pulledAtUTC": "2026-10-23 00:52 UTC",
-  "snapshotUTC": "2026-10-23T00:52:25Z",
-  "localDay": "2026-10-22",
+  "pulledAtPT": "2026-10-24 07:17 PT",
+  "pulledAtUTC": "2026-10-24 14:17 UTC",
+  "snapshotUTC": "2026-10-24T14:17:00Z",
+  "localDay": "2026-10-24",
   "facility": "Valley View (LT_F1)",
   "tenant": "LT",
   "scope": "Bay 4 DOCK50-DOCK72",
-  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-22 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-23T00:52:25Z snapshot instant.",
+  "note": "All values are live WISE/WMS reads (read-only) for the 2026-10-24 facility-local (America/Los_Angeles) day. load-task/receive-task return task start/end timestamps in UTC; door durations are elapsed as-of the 2026-10-24T14:17:00Z snapshot instant.",
   "doorIdMap": {
     "DOCK50": "570",
     "DOCK51": "554",
@@ -34,43 +34,53 @@
   },
   "summary": {
     "totalDoors": 23,
-    "occupied": 5,
+    "occupied": 10,
     "reserved": 1,
-    "available": 17,
-    "doorsWithActiveTasks": 6,
+    "available": 12,
+    "doorsWithActiveTasks": 11,
     "anomalyDoors": [
       "DOCK50",
-      "DOCK54"
+      "DOCK54",
+      "DOCK55"
     ],
-    "activeTasks": 7,
-    "activeLoad": 3,
-    "activeReceive": 4,
-    "scheduledInboundOrders": 36,
-    "scheduledInboundReceived": 4,
-    "pctScheduledInboundReceived": 11.1,
-    "scheduledOutboundOrders": 151,
-    "scheduledOutboundLoaded": 113,
-    "pctScheduledOutboundLoaded": 74.8,
+    "activeTasks": 12,
+    "activeLoad": 6,
+    "activeReceive": 6,
+    "scheduledInboundOrders": 2,
+    "scheduledInboundReceived": 0,
+    "pctScheduledInboundReceived": 0.0,
+    "scheduledOutboundOrders": 8,
+    "scheduledOutboundLoaded": 1,
+    "pctScheduledOutboundLoaded": 12.5,
     "nativeDockStatus": {
-      "OCCUPIED": 11,
-      "AVAILABLE": 12
+      "RESERVED": 1,
+      "OCCUPIED": 13,
+      "AVAILABLE": 9
     }
   },
   "assigneeCounts": [
     {
       "assignee": "ARNULFO MUNGUIA",
+      "taskCount": 3
+    },
+    {
+      "assignee": "EDUARDO MEJIA",
       "taskCount": 2
+    },
+    {
+      "assignee": "DANIELA GONZALEZ",
+      "taskCount": 2
+    },
+    {
+      "assignee": "JESUS ESPINOZA",
+      "taskCount": 1
     },
     {
       "assignee": "DANIEL BELTRAN",
       "taskCount": 1
     },
     {
-      "assignee": "RUFINO MUNGUIA",
-      "taskCount": 1
-    },
-    {
-      "assignee": "DANIELA GONZALEZ",
+      "assignee": "Fatima Ponce",
       "taskCount": 1
     },
     {
@@ -83,27 +93,27 @@
     }
   ],
   "allTimeAssigneeCounts": {
-    "closedTotal": 4186,
+    "closedTotal": 4202,
     "distinct": 84,
     "top": [
       {
         "assignee": "DANIEL BELTRAN",
-        "taskCount": 1090
+        "taskCount": 1092
       },
       {
         "assignee": "ARNULFO MUNGUIA",
-        "taskCount": 1081
+        "taskCount": 1086
       },
       {
         "assignee": "DANIELA GONZALEZ",
-        "taskCount": 453
+        "taskCount": 459
       },
       {
         "assignee": "GEORGE LC BROWN",
         "taskCount": 151
       },
       {
-        "assignee": "RENATO ROSALES GARCIA",
+        "assignee": "Renato Rosales",
         "taskCount": 151
       },
       {
@@ -112,7 +122,7 @@
       },
       {
         "assignee": "Fatima Ponce",
-        "taskCount": 143
+        "taskCount": 144
       },
       {
         "assignee": "JULIO CESAR Alvarado",
@@ -134,19 +144,17 @@
       "locationId": "570",
       "status": "Occupied",
       "assignees": [
-        "daira gonzalez",
-        "DANIEL BELTRAN"
+        "daira gonzalez"
       ],
       "customers": [
         "GURUNANDA, LLC"
       ],
       "taskIds": [
-        "TASK-5090739",
-        "TASK-5401012"
+        "TASK-5090739"
       ],
-      "duration": "366d 4h 31m",
+      "duration": "367d 17h 55m",
       "anomaly": true,
-      "nativeDockStatus": "OCCUPIED",
+      "nativeDockStatus": "RESERVED",
       "tasks": [
         {
           "id": "TASK-5090739",
@@ -157,72 +165,97 @@
           "customerId": "ORG-655875",
           "start": "2025-10-21T20:21:14",
           "end": "2025-10-22T17:42:01",
-          "duration": "366d 4h 31m"
-        },
-        {
-          "id": "TASK-5401012",
-          "type": "LOAD",
-          "status": "IN_PROGRESS",
-          "assignee": "DANIEL BELTRAN",
-          "customer": "GURUNANDA, LLC",
-          "customerId": "ORG-655875",
-          "start": "2026-10-22T20:12:20",
-          "end": null,
-          "duration": "4h 40m"
+          "duration": "367d 17h 55m"
         }
       ]
     },
     {
       "door": "DOCK51",
       "locationId": "554",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
+      "status": "Occupied",
+      "assignees": [
+        "JESUS ESPINOZA"
+      ],
+      "customers": [
+        "GURUNANDA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5402525"
+      ],
+      "duration": "15h 34m",
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
-      "tasks": []
+      "nativeDockStatus": "OCCUPIED",
+      "tasks": [
+        {
+          "id": "TASK-5402525",
+          "type": "LOAD",
+          "status": "IN_PROGRESS",
+          "assignee": "JESUS ESPINOZA",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-23T22:42:02",
+          "end": null,
+          "duration": "15h 34m"
+        }
+      ]
     },
     {
       "door": "DOCK52",
       "locationId": "556",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
+      "status": "Occupied",
+      "assignees": [
+        "EDUARDO MEJIA"
+      ],
+      "customers": [
+        "GURUNANDA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5402515"
+      ],
+      "duration": "15h 51m",
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
-      "tasks": []
+      "nativeDockStatus": "OCCUPIED",
+      "tasks": [
+        {
+          "id": "TASK-5402515",
+          "type": "LOAD",
+          "status": "IN_PROGRESS",
+          "assignee": "EDUARDO MEJIA",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-23T22:25:38",
+          "end": null,
+          "duration": "15h 51m"
+        }
+      ]
     },
     {
       "door": "DOCK53",
       "locationId": "552",
       "status": "Occupied",
       "assignees": [
-        "ARNULFO MUNGUIA"
+        "DANIEL BELTRAN"
       ],
       "customers": [
         "GURUNANDA, LLC"
       ],
       "taskIds": [
-        "TASK-5401111"
+        "TASK-5402365"
       ],
-      "duration": "3h 40m",
+      "duration": "16h 56m",
       "anomaly": false,
       "nativeDockStatus": "OCCUPIED",
       "tasks": [
         {
-          "id": "TASK-5401111",
+          "id": "TASK-5402365",
           "type": "LOAD",
           "status": "IN_PROGRESS",
-          "assignee": "ARNULFO MUNGUIA",
+          "assignee": "DANIEL BELTRAN",
           "customer": "GURUNANDA, LLC",
           "customerId": "ORG-655875",
-          "start": "2026-10-22T21:11:57",
+          "start": "2026-10-23T21:20:14",
           "end": null,
-          "duration": "3h 40m"
+          "duration": "16h 56m"
         }
       ]
     },
@@ -237,11 +270,12 @@
         "GURUNANDA, LLC"
       ],
       "taskIds": [
-        "TASK-5338695"
+        "TASK-5338695",
+        "TASK-5402536"
       ],
-      "duration": "76d 1h 22m",
+      "duration": "77d 14h 47m",
       "anomaly": true,
-      "nativeDockStatus": "AVAILABLE",
+      "nativeDockStatus": "OCCUPIED",
       "tasks": [
         {
           "id": "TASK-5338695",
@@ -252,33 +286,80 @@
           "customerId": "ORG-655875",
           "start": "2026-08-07T23:29:29",
           "end": "2026-08-10T16:27:26",
-          "duration": "76d 1h 22m"
+          "duration": "77d 14h 47m"
+        },
+        {
+          "id": "TASK-5402536",
+          "type": "LOAD",
+          "status": "NEW",
+          "assignee": "ARNULFO MUNGUIA",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": null,
+          "end": null,
+          "duration": null
         }
       ]
     },
     {
       "door": "DOCK55",
       "locationId": "560",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
-      "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
-      "tasks": []
+      "status": "Occupied",
+      "assignees": [
+        "EDUARDO MEJIA"
+      ],
+      "customers": [
+        "GURUNANDA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5402587"
+      ],
+      "duration": "8h 19m",
+      "anomaly": true,
+      "nativeDockStatus": "OCCUPIED",
+      "tasks": [
+        {
+          "id": "TASK-5402587",
+          "type": "LOAD",
+          "status": "IN_PROGRESS",
+          "assignee": "EDUARDO MEJIA",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-24T05:57:02",
+          "end": "2026-10-24T06:19:19",
+          "duration": "8h 19m"
+        }
+      ]
     },
     {
       "door": "DOCK56",
       "locationId": "575",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
+      "status": "Occupied",
+      "assignees": [
+        "ARNULFO MUNGUIA"
+      ],
+      "customers": [
+        "KARAKA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5401774"
+      ],
+      "duration": "20h 52m",
       "anomaly": false,
       "nativeDockStatus": "AVAILABLE",
-      "tasks": []
+      "tasks": [
+        {
+          "id": "TASK-5401774",
+          "type": "RECEIVE",
+          "status": "IN_PROGRESS",
+          "assignee": "ARNULFO MUNGUIA",
+          "customer": "KARAKA, LLC",
+          "customerId": "ORG-585450",
+          "start": "2026-10-23T17:24:46",
+          "end": null,
+          "duration": "20h 52m"
+        }
+      ]
     },
     {
       "door": "DOCK57",
@@ -301,7 +382,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "OCCUPIED",
+      "nativeDockStatus": "AVAILABLE",
       "tasks": []
     },
     {
@@ -313,7 +394,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "OCCUPIED",
+      "nativeDockStatus": "AVAILABLE",
       "tasks": []
     },
     {
@@ -331,32 +412,14 @@
     {
       "door": "DOCK61",
       "locationId": "567",
-      "status": "Occupied",
-      "assignees": [
-        "DANIELA GONZALEZ"
-      ],
-      "customers": [
-        "GURUNANDA, LLC"
-      ],
-      "taskIds": [
-        "TASK-5400354"
-      ],
-      "duration": "2h 13m",
+      "status": "Available",
+      "assignees": [],
+      "customers": [],
+      "taskIds": [],
+      "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "OCCUPIED",
-      "tasks": [
-        {
-          "id": "TASK-5400354",
-          "type": "RECEIVE",
-          "status": "IN_PROGRESS",
-          "assignee": "DANIELA GONZALEZ",
-          "customer": "GURUNANDA, LLC",
-          "customerId": "ORG-655875",
-          "start": "2026-10-22T22:39:25",
-          "end": null,
-          "duration": "2h 13m"
-        }
-      ]
+      "nativeDockStatus": "AVAILABLE",
+      "tasks": []
     },
     {
       "door": "DOCK62",
@@ -373,14 +436,32 @@
     {
       "door": "DOCK63",
       "locationId": "568",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
+      "status": "Occupied",
+      "assignees": [
+        "DANIELA GONZALEZ"
+      ],
+      "customers": [
+        "GURUNANDA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5401404"
+      ],
+      "duration": "1d 12h 59m",
       "anomaly": false,
-      "nativeDockStatus": "OCCUPIED",
-      "tasks": []
+      "nativeDockStatus": "AVAILABLE",
+      "tasks": [
+        {
+          "id": "TASK-5401404",
+          "type": "RECEIVE",
+          "status": "IN_PROGRESS",
+          "assignee": "DANIELA GONZALEZ",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-23T01:17:29",
+          "end": null,
+          "duration": "1d 12h 59m"
+        }
+      ]
     },
     {
       "door": "DOCK64",
@@ -397,14 +478,32 @@
     {
       "door": "DOCK65",
       "locationId": "573",
-      "status": "Available",
-      "assignees": [],
-      "customers": [],
-      "taskIds": [],
-      "duration": null,
+      "status": "Occupied",
+      "assignees": [
+        "DANIELA GONZALEZ"
+      ],
+      "customers": [
+        "GURUNANDA, LLC"
+      ],
+      "taskIds": [
+        "TASK-5402568"
+      ],
+      "duration": "12h 32m",
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
-      "tasks": []
+      "nativeDockStatus": "OCCUPIED",
+      "tasks": [
+        {
+          "id": "TASK-5402568",
+          "type": "RECEIVE",
+          "status": "IN_PROGRESS",
+          "assignee": "DANIELA GONZALEZ",
+          "customer": "GURUNANDA, LLC",
+          "customerId": "ORG-655875",
+          "start": "2026-10-24T01:44:48",
+          "end": null,
+          "duration": "12h 32m"
+        }
+      ]
     },
     {
       "door": "DOCK66",
@@ -435,7 +534,7 @@
       "locationId": "574",
       "status": "Occupied",
       "assignees": [
-        "RUFINO MUNGUIA"
+        "Fatima Ponce"
       ],
       "customers": [
         "GURUNANDA, LLC"
@@ -443,7 +542,7 @@
       "taskIds": [
         "TASK-5401002"
       ],
-      "duration": "5h 30m",
+      "duration": "1d 18h 54m",
       "anomaly": false,
       "nativeDockStatus": "AVAILABLE",
       "tasks": [
@@ -451,12 +550,12 @@
           "id": "TASK-5401002",
           "type": "RECEIVE",
           "status": "IN_PROGRESS",
-          "assignee": "RUFINO MUNGUIA",
+          "assignee": "Fatima Ponce",
           "customer": "GURUNANDA, LLC",
           "customerId": "ORG-655875",
           "start": "2026-10-22T19:22:18",
           "end": null,
-          "duration": "5h 30m"
+          "duration": "1d 18h 54m"
         }
       ]
     },
@@ -475,7 +574,7 @@
       ],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
+      "nativeDockStatus": "OCCUPIED",
       "tasks": [
         {
           "id": "TASK-5381972",
@@ -523,7 +622,7 @@
       "taskIds": [],
       "duration": null,
       "anomaly": false,
-      "nativeDockStatus": "AVAILABLE",
+      "nativeDockStatus": "OCCUPIED",
       "tasks": []
     }
   ],
@@ -540,25 +639,36 @@
       "endTime": "2025-10-22T17:42:01"
     },
     {
-      "taskId": "TASK-5401012",
+      "taskId": "TASK-5402525",
       "type": "LOAD",
       "status": "IN_PROGRESS",
-      "dockName": "DOCK50",
-      "assigneeUserName": "DANIEL BELTRAN",
+      "dockName": "DOCK51",
+      "assigneeUserName": "JESUS ESPINOZA",
       "customerId": "ORG-655875",
       "customerName": "GURUNANDA, LLC",
-      "startTime": "2026-10-22T20:12:20",
+      "startTime": "2026-10-23T22:42:02",
       "endTime": null
     },
     {
-      "taskId": "TASK-5401111",
+      "taskId": "TASK-5402515",
+      "type": "LOAD",
+      "status": "IN_PROGRESS",
+      "dockName": "DOCK52",
+      "assigneeUserName": "EDUARDO MEJIA",
+      "customerId": "ORG-655875",
+      "customerName": "GURUNANDA, LLC",
+      "startTime": "2026-10-23T22:25:38",
+      "endTime": null
+    },
+    {
+      "taskId": "TASK-5402365",
       "type": "LOAD",
       "status": "IN_PROGRESS",
       "dockName": "DOCK53",
-      "assigneeUserName": "ARNULFO MUNGUIA",
+      "assigneeUserName": "DANIEL BELTRAN",
       "customerId": "ORG-655875",
       "customerName": "GURUNANDA, LLC",
-      "startTime": "2026-10-22T21:11:57",
+      "startTime": "2026-10-23T21:20:14",
       "endTime": null
     },
     {
@@ -573,14 +683,58 @@
       "endTime": "2026-08-10T16:27:26"
     },
     {
-      "taskId": "TASK-5400354",
+      "taskId": "TASK-5402536",
+      "type": "LOAD",
+      "status": "NEW",
+      "dockName": "DOCK54",
+      "assigneeUserName": "ARNULFO MUNGUIA",
+      "customerId": "ORG-655875",
+      "customerName": "GURUNANDA, LLC",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "taskId": "TASK-5402587",
+      "type": "LOAD",
+      "status": "IN_PROGRESS",
+      "dockName": "DOCK55",
+      "assigneeUserName": "EDUARDO MEJIA",
+      "customerId": "ORG-655875",
+      "customerName": "GURUNANDA, LLC",
+      "startTime": "2026-10-24T05:57:02",
+      "endTime": "2026-10-24T06:19:19"
+    },
+    {
+      "taskId": "TASK-5401774",
       "type": "RECEIVE",
       "status": "IN_PROGRESS",
-      "dockName": "DOCK61",
+      "dockName": "DOCK56",
+      "assigneeUserName": "ARNULFO MUNGUIA",
+      "customerId": "ORG-585450",
+      "customerName": "KARAKA, LLC",
+      "startTime": "2026-10-23T17:24:46",
+      "endTime": null
+    },
+    {
+      "taskId": "TASK-5401404",
+      "type": "RECEIVE",
+      "status": "IN_PROGRESS",
+      "dockName": "DOCK63",
       "assigneeUserName": "DANIELA GONZALEZ",
       "customerId": "ORG-655875",
       "customerName": "GURUNANDA, LLC",
-      "startTime": "2026-10-22T22:39:25",
+      "startTime": "2026-10-23T01:17:29",
+      "endTime": null
+    },
+    {
+      "taskId": "TASK-5402568",
+      "type": "RECEIVE",
+      "status": "IN_PROGRESS",
+      "dockName": "DOCK65",
+      "assigneeUserName": "DANIELA GONZALEZ",
+      "customerId": "ORG-655875",
+      "customerName": "GURUNANDA, LLC",
+      "startTime": "2026-10-24T01:44:48",
       "endTime": null
     },
     {
@@ -588,7 +742,7 @@
       "type": "RECEIVE",
       "status": "IN_PROGRESS",
       "dockName": "DOCK68",
-      "assigneeUserName": "RUFINO MUNGUIA",
+      "assigneeUserName": "Fatima Ponce",
       "customerId": "ORG-655875",
       "customerName": "GURUNANDA, LLC",
       "startTime": "2026-10-22T19:22:18",
@@ -611,9 +765,9 @@
     "exactMatchCount": 0,
     "facilityGeneralTaskSweep": {
       "total": 123,
-      "NEW": 12,
+      "NEW": 9,
+      "NEEDS_APPROVAL": 21,
       "CLOSED": 91,
-      "NEEDS_APPROVAL": 18,
       "IN_PROGRESS": 2
     },
     "arnulfoGeneralTasks": [
@@ -627,281 +781,43 @@
       }
     ],
     "arnulfoBay4Active": {
-      "count": 2,
+      "count": 3,
       "load": 2,
-      "receive": 0,
+      "receive": 1,
       "guru": 2,
-      "karaka": 0
+      "karaka": 1
     },
-    "result": "No task literally named 'Guru live out / in assign to Arnulfo' exists in WISE - 0 exact matches across all 123 facility general tasks; every task note, job description, and task-line field was scanned. Closest real match - ARNULFO MUNGUIA's Bay 4 DOCK50-DOCK72 assigned activity: 2 active tasks (2 LOAD / 0 RECEIVE) across GURUNANDA and KARAKA."
+    "result": "No task literally named 'Guru live out / in assign to Arnulfo' exists in WISE - 0 exact matches across all 123 facility general tasks; every task note, job description, and task-line field was scanned. Closest real match - ARNULFO MUNGUIA's Bay 4 DOCK50-DOCK72 assigned activity: 3 active tasks (2 LOAD / 1 RECEIVE) across GURUNANDA and KARAKA."
   },
   "schedule": {
-    "window": "2026-10-22 00:00:00 - 2026-10-22 23:59:59 (facility-local America/Los_Angeles)",
+    "window": "2026-10-24 00:00:00 - 2026-10-24 23:59:59 (facility-local America/Los_Angeles)",
     "inbound": {
-      "scheduled": 36,
-      "received": 4,
-      "pctReceived": 11.1,
+      "scheduled": 2,
+      "received": 0,
+      "pctReceived": 0.0,
       "definition": "receipts with appointmentTime on the day; received = receipts with receivedTime set",
       "rows": [
         {
-          "id": "RN-194501",
+          "id": "RN-5011124",
           "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T07:00:00",
+          "appointmentTime": "2026-10-24T01:00:00",
           "receivedTime": null,
           "customer": "GURUNANDA, LLC"
         },
         {
-          "id": "RN-5011069",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011068",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-194488",
+          "id": "RN-193940",
           "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T07:00:00",
+          "appointmentTime": "2026-10-24T01:00:00",
           "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-194487",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T07:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-194473",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T07:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011043",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011040",
-          "status": "CLOSED",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": "2026-10-22T21:43:14",
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011037",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T05:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011036",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T06:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-5011031",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T17:00:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-194418",
-          "status": "CLOSED",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": "2026-10-22T19:29:27",
-          "customer": "KARAKA, LLC"
-        },
-        {
-          "id": "RN-5011016",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T20:30:00",
-          "receivedTime": null,
-          "customer": "GURUNANDA, LLC"
-        },
-        {
-          "id": "RN-194309",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-780772"
-        },
-        {
-          "id": "RN-5010957",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T17:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-194207",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T15:00:00",
-          "receivedTime": null,
-          "customer": "ORG-214099"
-        },
-        {
-          "id": "RN-194197",
-          "status": "CLOSED",
-          "appointmentTime": "2026-10-22T15:00:00",
-          "receivedTime": "2026-10-22T21:50:10",
-          "customer": "KARAKA, LLC"
-        },
-        {
-          "id": "RN-194081",
-          "status": "CLOSED",
-          "appointmentTime": "2026-10-22T17:00:00",
-          "receivedTime": "2026-10-22T20:49:54",
-          "customer": "KARAKA, LLC"
-        },
-        {
-          "id": "RN-194017",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T22:00:00",
-          "receivedTime": null,
-          "customer": "ORG-697616"
-        },
-        {
-          "id": "RN-194014",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T22:00:00",
-          "receivedTime": null,
-          "customer": "ORG-697616"
-        },
-        {
-          "id": "RN-194009",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T22:00:00",
-          "receivedTime": null,
-          "customer": "ORG-697616"
-        },
-        {
-          "id": "RN-5010885",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T15:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010861",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010864",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010837",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T21:00:00",
-          "receivedTime": null,
-          "customer": "ORG-40858"
-        },
-        {
-          "id": "RN-5010839",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T22:00:00",
-          "receivedTime": null,
-          "customer": "ORG-40858"
-        },
-        {
-          "id": "RN-193839",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": null,
-          "customer": "ORG-368834"
-        },
-        {
-          "id": "RN-193838",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": null,
-          "customer": "ORG-368834"
-        },
-        {
-          "id": "RN-5010825",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-754962"
-        },
-        {
-          "id": "RN-5010820",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T19:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010819",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T21:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010816",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T16:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-5010809",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-655338"
-        },
-        {
-          "id": "RN-193627",
-          "status": "IMPORTED",
-          "appointmentTime": "2026-10-22T17:00:00",
-          "receivedTime": null,
-          "customer": "ORG-735240"
-        },
-        {
-          "id": "RN-193020",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T16:00:00",
-          "receivedTime": null,
-          "customer": "ORG-616507"
-        },
-        {
-          "id": "RN-193021",
-          "status": "IN_PROGRESS",
-          "appointmentTime": "2026-10-22T18:00:00",
-          "receivedTime": null,
-          "customer": "ORG-616507"
+          "customer": "ORG-738412"
         }
       ]
     },
     "outbound": {
-      "scheduled": 151,
-      "loaded": 113,
-      "pctLoaded": 74.8,
-      "definition": "loads with appointmentTime in the 2026-10-22 facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."
+      "scheduled": 8,
+      "loaded": 1,
+      "pctLoaded": 12.5,
+      "definition": "loads with appointmentTime in the 2026-10-24 facility-local (PT) day bucket; loaded = load status LOADED or SHIPPED."
     }
   }
 }
